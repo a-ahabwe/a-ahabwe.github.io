@@ -6,7 +6,7 @@ baseurl: ""  # Leave blank if you're deploying to the root (e.g., a-ahabwe.githu
 url: "https://a-ahabwe.github.io"  # Your site URL
 
 # Theme (you can use any Jekyll theme supported by GitHub Pages)
-theme: minima  # A clean and simple default theme
+theme: modernist  # A clean and simple default theme
 
 # Social links (optional)
 social_links:
