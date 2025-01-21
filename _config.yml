@@ -1,0 +1,35 @@
+# Basic site settings
+title: "Lynn Portfolio"  # Your site title
+description: "Welcome to my trashy portfolio 🚀"  # Meta description
+author: Omuhara  # Your name
+baseurl: ""  # Leave blank if you're deploying to the root (e.g., a-ahabwe.github.io)
+url: "https://a-ahabwe.github.io"  # Your site URL
+
+# Theme (you can use any Jekyll theme supported by GitHub Pages)
+theme: minima  # A clean and simple default theme
+
+# Social links (optional)
+social_links:
+  - name: GitHub
+    url: https://github.com/a-ahabwe
+  - name: LinkedIn
+    url: https://linkedin.com/in/your-profile
+  - name: Twitter
+    url: https://twitter.com/your-handle
+
+# Enable Markdown and plugins (optional)
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag  # For better search engine optimization (SEO)
+  - jekyll-sitemap  # Automatically generate a sitemap.xml for your site
+
+# Exclude files/folders from your site
+exclude:
+  - README.md  # Exclude README if you don't want it to show on your site
+  - .gitignore
+
+# Navigation links (optional)
+nav:
+  - Home: /
+  - About: /about.html
+  - Projects: /projects.html
