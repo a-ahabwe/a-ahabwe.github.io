@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+.show{
+  z-index:1;
+}
+#terminal, #viewport {
+  position: absolute;
+  background-color: #c0c0c0;
+  text-align: center;
+  width: 80%;
+  max-width: 1200px;
+  height: 80%;
+  max-height: 700px;
+  resize: both;
+  border: outset 3px;
+  padding: 5px;
+}
+
+#viewport {
+
+}
+
+iframe {
+  border: inset 3px;
+}
+
+#terminalheader, #viewportheader {
+  padding: 3px;
+  cursor: move;
+  z-index: 10;
+  background-color: #00017f;
+  color: #fff;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.winbar {
+  background-color: #c0c0c0;
+  position: absolute; 
+  bottom: 0px; 
+  height: 40px;
+  width: 100%;
+  padding: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: outset 3px;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #008080;
+  font-family: w95;
+  font-size: 14px;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+
+@font-face {
+    font-family: w95;
+    src:url(./W95FA.otf);
+}
+
+button {
+  border: outset 3px;
+  background-color: #c0c0c0;
+  font-family: w95;
+  font-weight: bold;
+  font-smooth: never;
+  -webkit-font-smoothing : none;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+button:active {
+  border: inset 3px;
+  background-color: #979797;
+}
+
+
+
+</style>
+<body>
+
+
+<div id="terminal">
+  <div id="terminalheader" class="header-inactive"><span style="float: left; margin-top: 3px; margin-left: 3px;">FR3-d1</span><button style="right: 0px; width: 25px;">?</button><button style="right: 0px;">X</button></div>
+  <iframe src="./index.html" style="width: calc(100% - 6px); height: calc(100% - 40px);"></iframe>
+</div>
+
+<div id="viewport" style="left:50px;">
+  <div id="viewportheader"><span style="float: left; margin-top: 3px; margin-left: 3px;">Browser</span><button style="right: 0px; width: 25px;">?</button><button style="right: 0px;">X</button></div>
+  <iframe src="" name="content" id="content" style="width: calc(100% - 6px); height: calc(100% - 40px);"></iframe>
+</div>
+
+<div class="winbar">
+  <button style="height: 100%; width: 80px; font-family: w95; font-size: 16px;">
+    <img src="./win.png"> Start
+  </button>
+  <div style="float: right; text-align: center; padding-top: 4px; height: 100%; width: 80px; font-family: w95; font-size: 16px; border: inset 3px; box-sizing: border-box; background-color: #b4b4b4;">2:03 AM</div>
+</div>
+
+<script>
+  dragElement(document.getElementById("terminal"));
+  dragElement(document.getElementById("viewport"));
+
+  function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "header")) {
+      document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    } else {
+      elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      document.onmousemove = elementDrag;
+      
+    }
+
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
+
+  document.getElementById("terminal").onmousedown = function() {
+    document.getElementById("terminal").classList.add("show");
+    document.getElementById("terminalheader").style.backgroundColor = "#00017f";
+    document.getElementById("terminalheader").style.color = "white";
+    document.getElementById("viewport").classList.remove("show");
+    document.getElementById("viewportheader").style.backgroundColor = "#808080";
+    document.getElementById("viewportheader").style.color = "#c0c0c0";
+  }
+
+  document.getElementById("viewport").onmousedown = function() {
+    document.getElementById("terminal").classList.remove("show");
+    document.getElementById("terminalheader").style.backgroundColor = "#808080";
+    document.getElementById("terminalheader").style.color = "#c0c0c0";
+    document.getElementById("viewport").classList.add("show");
+    document.getElementById("viewportheader").style.backgroundColor = "#00017f";
+    document.getElementById("viewportheader").style.color = "white";
+  }
+
+  switchIncident();
+
+  
+  
+  function switchIncident () {
+    var incident = document.getElementById("content").contentWindow.currentIncident;
+    switch (incident) {
+      default:
+        document.getElementById("content").src = "./case0.html";
+        break;
+      case -1:
+        document.getElementById("content").src = "./case0.html";
+        break;
+      case 1:
+        document.getElementById("content").src = "./case1/forums.html";
+        break;
+    }
+  }
+
+  setInterval(switchIncident, 1000);
+
+</script>
+
+</body>
+</html>

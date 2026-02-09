@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+      background-color: black;
+      color: #aaa;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    ::selection {
+  /* Change highlight background color to black */
+  background: #aaa;
+  /* Change highlight text color to red */
+  color: black;
+}
+
+    
+    input, input:focus {
+      border-width: 1px;
+      border-color: #aaa;
+      background-color: black;
+      color: #aaa;
+      width: 90%;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+    }
+    
+    button {
+      border-width: 1px;
+      border-color: #aaa;
+      background-color: black;
+      color: #aaa;
+      position: absolute;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      width: 5%;
+    }
+    
+    div {
+      background-color: black;
+      position: absolute;
+      bottom: 10px;
+      left: 0px;
+    }
+    
+    input:focus{ outline:0; border-width: 1px; border-color: white;}
+    
+    </style>
+  </head>
+  <body>
+  <p id="text" style="white-space: pre"></p>
+  
+  <div style="width: 100%; padding: 0px; margin: 0px; border: 0px;">
+    <input type="text" id="inputtext" style="margin-left: 10px;"> <button id="send" onclick="send()">Send</button>
+  </div>
+    
+    <script>
+      var canSend = true;
+      var inputText = document.getElementById('inputtext');
+
+      var help = 0;
+      var tested = false;
+      
+
+      document.getElementById('inputtext').addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("send").click();
+        }
+      }); 
+
+      function send () {
+        if (canSend && inputText.value != "") {
+          var text = inputText.value.toLowerCase();
+          document.getElementById('text').append("> " + inputText.value + "\n");
+          canSend = false;
+          if (help == 0) {
+            if (text.includes('hello') || text.includes('hi') || text.includes('hey')) {
+              setTimeout(function () { type("Hello, I am Sergey Ushanka!", 75) }, 250);
+            } else if (text.includes('test') && !tested) {
+              setTimeout(function () { type("What are you testing, silly?", 150) }, 250);
+              tested = true;
+            } else if (text.includes('how') || text.includes('who') || text.includes('what') || text.includes('when') || text.includes('where') || text.includes('why') || text.includes("?")) {
+              setTimeout(function () { type("I'm afraid I can't answer that question.", 75) }, 250);
+            } else if (help) {
+              
+            } else {
+              setTimeout(function () { type("I'm sorry, I don't seem to understand. Please type 'help' for help.", 75) }, 250);
+            }
+          }
+          
+          
+          inputText.value = "";
+        }
+      }
+
+      var index = 0;
+      function type(txt, speed) {
+        console.log("called");
+        
+        if (index < txt.length) {
+          console.log('added');
+          document.getElementById("text").innerHTML += txt.charAt(index);
+          index++;
+          setTimeout(function () { type(txt, speed) }, speed);
+        } else {
+          console.log('ended' + txt + txt.length)
+          index = 0;
+          document.getElementById('text').append("\n");
+          canSend = true;
+        }
+      }
+    </script>
+  </body>
+  
+  
+</html>

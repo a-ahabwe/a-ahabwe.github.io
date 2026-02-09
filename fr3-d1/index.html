@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FR3-d1 Console</title>
+        <style>
+            body {
+                background-color: black;
+                color: #aaa;
+                font-family: var(--font,monospace);
+                font-size: 13px;
+                animation-name: pulse;
+                animation-duration: 6s;
+                animation-iteration-count: infinite;
+                animation-delay: 10s;
+                padding: 2px;
+            }
+            p {
+                margin: 0px;
+                padding: 0px;
+                --pixel-density: 1;
+                font-size: calc(var(--size, 1)*(12px/var(--pixel-density, 1)));
+            }
+        </style>
+    </head>
+
+    <body>
+        <p id="text" style="white-space: pre-wrap;"></p>
+
+
+        <script>
+            text = document.getElementById("text");
+            timeAmt = 0;
+            setTimeout(function(){ addText('FR3d1 OS v2.0\n') }, time(50));
+            setTimeout(function(){ addText('Copyright (C) 1989-2024, Rusty Quill Ltd.\n\n') }, time(100));
+
+            setTimeout(function(){ addText('Initializing J.01 ') }, time(150));
+            setTimeout(function(){ addText('.') }, time(175));
+            setTimeout(function(){ addText('.') }, time(175));
+            setTimeout(function(){ addText('.') }, time(175));
+            setTimeout(function(){ addText(' OK\n') }, time(250));
+            setTimeout(function(){ addText('Initializing M.01 ') }, time(75));
+            setTimeout(function(){ addText('.') }, time(175));
+            setTimeout(function(){ addText('.') }, time(175));
+            setTimeout(function(){ addText('.') }, time(175));
+            setTimeout(function(){ addText(' OK\n') }, time(250));
+            setTimeout(function(){ addText('Initializing J.02 ') }, time(75));
+            setTimeout(function(){ addText('.') }, time(175));
+            setTimeout(function(){ addText('.') }, time(175));
+            setTimeout(function(){ addText('.') }, time(175));
+            setTimeout(function(){ addText(' Ok\n') }, time(300));
+
+            setTimeout(function(){ addText('                                                                                          dddddddd            \n') }, time(150));
+            setTimeout(function(){ addText('FFFFFFFFFFFFFFFFFFFFFFRRRRRRRRRRRRRRRRR    333333333333333                                d::::::d  1111111   \n') }, time(20));
+            setTimeout(function(){ addText('F::::::::::::::::::::FR::::::::::::::::R  3:::::::::::::::33                              d::::::d 1::::::1   \n') }, time(20));
+            setTimeout(function(){ addText('F::::::::::::::::::::FR::::::RRRRRR:::::R 3::::::33333::::::3                             d::::::d1:::::::1   \n') }, time(20));
+            setTimeout(function(){ addText('FF::::::FFFFFFFFF::::FRR:::::R     R:::::R3333333     3:::::3                             d:::::d 111:::::1   \n') }, time(20));
+            setTimeout(function(){ addText('  F:::::F       FFFFFF  R::::R     R:::::R            3:::::3                     ddddddddd:::::d    1::::1   \n') }, time(20));
+            setTimeout(function(){ addText('  F:::::F               R::::R     R:::::R            3:::::3                   dd::::::::::::::d    1::::1   \n') }, time(20));
+            setTimeout(function(){ addText('  F::::::FFFFFFFFFF     R::::RRRRRR:::::R     33333333:::::3                   d::::::::::::::::d    1::::1   \n') }, time(20));
+            setTimeout(function(){ addText('  F:::::::::::::::F     R:::::::::::::RR      3:::::::::::3   --------------- d:::::::ddddd:::::d    1::::l   \n') }, time(20));
+            setTimeout(function(){ addText('  F:::::::::::::::F     R::::RRRRRR:::::R     33333333:::::3  -:::::::::::::- d::::::d    d:::::d    1::::l   \n') }, time(20));
+            setTimeout(function(){ addText('  F::::::FFFFFFFFFF     R::::R     R:::::R            3:::::3 --------------- d:::::d     d:::::d    1::::l   \n') }, time(20));
+            setTimeout(function(){ addText('  F:::::F               R::::R     R:::::R            3:::::3                 d:::::d     d:::::d    1::::l   \n') }, time(20));
+            setTimeout(function(){ addText('  F:::::F               R::::R     R:::::R            3:::::3                 d:::::d     d:::::d    1::::l   \n') }, time(20));
+            setTimeout(function(){ addText('FF:::::::FF           RR:::::R     R:::::R3333333     3:::::3                 d::::::ddddd::::::dd111::::::111\n') }, time(20));
+            setTimeout(function(){ addText('F::::::::FF           R::::::R     R:::::R3::::::33333::::::3                  d:::::::::::::::::d1::::::::::1\n') }, time(20));
+            setTimeout(function(){ addText('F::::::::FF           R::::::R     R:::::R3:::::::::::::::33                    d:::::::::ddd::::d1::::::::::1\n') }, time(20));
+            setTimeout(function(){ addText('FFFFFFFFFFF           RRRRRRRR     RRRRRRR 333333333333333                       ddddddddd   ddddd111111111111\n') }, time(20));
+            setTimeout(function(){ window.location.assign("./terminal.html"); }, time(50));
+
+
+            function addText (add) {
+                text.innerHTML += add;
+            }
+
+            function time (amt) {
+                timeAmt += amt;
+                return timeAmt;
+            }
+        </script>
+    </body>
+</html>

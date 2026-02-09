@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
+  <title>FR3-d1 Console</title>
+</head>
+<body>
+
+  <!-- #region Templates - these templates are accessed in the Javascript code further down -->
+  <template id="greetings">FR3d1 OS v2.0
+Copyright (C) 1989-2024, Rusty Quill Ltd.
+
+Initializing J.01 ... OK
+Initializing M.01 ... OK
+Initializing J.02 ... Ok
+                                                                                          dddddddd            
+FFFFFFFFFFFFFFFFFFFFFFRRRRRRRRRRRRRRRRR    333333333333333                                d::::::d  1111111   
+F::::::::::::::::::::FR::::::::::::::::R  3:::::::::::::::33                              d::::::d 1::::::1   
+F::::::::::::::::::::FR::::::RRRRRR:::::R 3::::::33333::::::3                             d::::::d1:::::::1   
+FF::::::FFFFFFFFF::::FRR:::::R     R:::::R3333333     3:::::3                             d:::::d 111:::::1   
+  F:::::F       FFFFFF  R::::R     R:::::R            3:::::3                     ddddddddd:::::d    1::::1   
+  F:::::F               R::::R     R:::::R            3:::::3                   dd::::::::::::::d    1::::1   
+  F::::::FFFFFFFFFF     R::::RRRRRR:::::R     33333333:::::3                   d::::::::::::::::d    1::::1   
+  F:::::::::::::::F     R:::::::::::::RR      3:::::::::::3   --------------- d:::::::ddddd:::::d    1::::l   
+  F:::::::::::::::F     R::::RRRRRR:::::R     33333333:::::3  -:::::::::::::- d::::::d    d:::::d    1::::l   
+  F::::::FFFFFFFFFF     R::::R     R:::::R            3:::::3 --------------- d:::::d     d:::::d    1::::l   
+  F:::::F               R::::R     R:::::R            3:::::3                 d:::::d     d:::::d    1::::l   
+  F:::::F               R::::R     R:::::R            3:::::3                 d:::::d     d:::::d    1::::l   
+FF:::::::FF           RR:::::R     R:::::R3333333     3:::::3                 d::::::ddddd::::::dd111::::::111
+F::::::::FF           R::::::R     R:::::R3::::::33333::::::3                  d:::::::::::::::::d1::::::::::1
+F::::::::FF           R::::::R     R:::::R3:::::::::::::::33                    d:::::::::ddd::::d1::::::::::1
+FFFFFFFFFFF           RRRRRRRR     RRRRRRR 333333333333333                       ddddddddd   ddddd111111111111
+                                                                                                              
+Welcome, employee of the Office of Incident Assessment and Response, to the FR3-d1 system! Type 'help' for help. 
+</template>
+
+
+<template id="binder">Classify each incident under two of the following categories (choose 1 from each column, and input both into DPHW command):
+  +---------------------------------+---------------------------------------+
+  | agglomeration (miscellany)      | intimidation [999 call]               |
+  +---------------------------------+---------------------------------------+
+  | architecture (liminal)          | compulsion [autopsy report]           |
+  +---------------------------------+---------------------------------------+
+  | collection (blood)              | trespass [chat log]                   |
+  +---------------------------------+---------------------------------------+
+  | dice (bone)                     | hunger [coursework]                   |
+  +---------------------------------+---------------------------------------+
+  | disappearance (undetermined)    | congregation [email]                  |
+  +---------------------------------+---------------------------------------+
+  | doppleganger (interdimensional) | regret [email]                        |
+  +---------------------------------+---------------------------------------+
+  | gambling (application)          | compulsion [email exchange]           |
+  +---------------------------------+---------------------------------------+
+  | hunt (aristocratic)             | frenzy [insurance claim]              |
+  +---------------------------------+---------------------------------------+
+  | infection (full body)           | invitation [internet blog]            |
+  +---------------------------------+---------------------------------------+
+  | injury (needles)                | arboreal [journal entry]              |
+  +---------------------------------+---------------------------------------+
+  | mascot (kids)                   | musical [letter]                      |
+  +---------------------------------+---------------------------------------+
+  | memory (derelict)               | growth (crystalline) [letter]         |
+  +---------------------------------+---------------------------------------+
+  | reanimation (partial)           | fate [magnus statement]               |
+  +---------------------------------+---------------------------------------+
+  | tattoo (corpse)                 | murder [magnus statement]             |
+  +---------------------------------+---------------------------------------+
+  | tattoo (influencer)             | social media (influencer) [recording] |
+  +---------------------------------+---------------------------------------+
+  | transformation (canine)         | horde [report]                        |
+  +---------------------------------+---------------------------------------+
+  | transformation (eyes)           | murder [TV interview]                 |
+  +---------------------------------+---------------------------------------+
+  | transformation (full)           | cardiac [video blog]                  |
+  +---------------------------------+---------------------------------------+
+  | transformation (snake)          | dysmorphic [video call]               |
+  +---------------------------------+---------------------------------------+
+  | transformation (tattoo)         | compulsion [voicemail]                |
+  +---------------------------------+---------------------------------------+
+  | architecture (landmark)         | self-destruction [voicemail]          |
+  +---------------------------------+---------------------------------------+
+  | experiment (brain)              | imprisonment (existential)            |
+  +---------------------------------+---------------------------------------+
+  | transformation (dysmorphic)     | doppleganger (infection)              |
+  +---------------------------------+---------------------------------------+
+  | baby (demonic)                  | delusion (exhaustion)                 |
+  +---------------------------------+---------------------------------------+
+  | food (gorging)                  | compulsion (disgust)                  |
+  +---------------------------------+---------------------------------------+
+  | exhaustion (athletic)           | compulsion (tape)                     |
+  +---------------------------------+---------------------------------------+
+</template>
+<!--Page 1 of 1         Type "classifications [page #]" to see more-->
+
+<template id="help">-------------------------------------------------------------------------------------------------------------  
+  &#8226; help [command name]                            | View a more detailed explanation of how to use a given command from this list.
+
+  &#8226; about                                          | View further information about this system and your job.
+
+  &#8226; incident [incident number]                     | Select the incident to view. 
+
+  &#8226; classifications                                | View a list of the different classifications an incident may be sorted into.
+
+  &#8226; dphw "[classification 1]" "[classification 2]" | Find the DPHW code of an incident using the two classifications chosen from the previous command. 
+
+  &#8226; file [incident number] [DPHW code]             | File away the specified incident using its DPHW code.
+  
+  &#8226; archive                                        | View previously-filed incidents.
+
+  &#8226; start "[program name]"                         | Open an executable program.
+
+  &#8226; explorer                                       | View program files on this device.
+-------------------------------------------------------------------------------------------------------------
+</template>
+
+<template id="incident20">
+-------------------------------------------------------------------------------------------------------------
+____________ _____           _ __  
+|  ___| ___ |____ |         | /  | 
+| |_  | |_/ /   / /______ __| `| | 
+|  _| |    /    \ |______/ _` || | 
+| |   | |\ \.___/ /     | (_| _| |_
+\_|   \_| \_\____/       \__,_\___/
+FR3-d1_OIARSTF_REC_DB
+-------------------------------------------------------------------------------------------------------------
+RECORDING 12042024-STFGBOU-CELL
+SUBJECT EXTGWIL "INK5OUL"
+TRANSCRIPTION FOLLOWS:
+
+I remember the first time I blew up. It was a wolf design I inked over a client's heart. I'd never have thou-
+ght of it as my best work, but I took a photo of it for the feed anyway. My hand had slipped ever so slightly
+at the edge of the mouth. Nothing the client would notice, but - it turned the snarl into more of a cheeky l-
+ittle grin? [CHUCKLES] Everyone really liked that. It was reposted by HellYesTattoos and suddenly my 79-foll-
+ower account was getting thousands of favourites, hundreds of new followers and so many lovely messages. They
+were trawling through all my old work, really amateur stuff, but still. They left the nicest comments.
+
+Next came the haters who were sick of "smirking wolf." "Sloppy work," they said. They didn't see the appeal, 
+didn't understand why everyone was sharing it.
+
+Those messages hurt. They hurt a lot more than the nice ones boosted me, but... it was still thrilling, you 
+know? Knowing that a stranger looked at you and saw someone important, someone worth getting angry about. I 
+didn't feel... good? I felt important.
+
+Maybe I should have resisted that feeling more, but. Why would I? These people wanted to hold me up, tell me 
+I'm better than them, I'm special. Why should it be on me to convince them otherwise? Why should I spend my 
+life scrabbling in the dirt, telling them, "I'm just like you, honest!", when I'm not. I'm better than them. 
+I must be, otherwise they wouldn't all spend so much of their time thinking about me.
+
+The next year was hard. First my follower-count plateaued, then it started to drop. I was churning out arty 
+shots of my work but nothing was catching any more, nothing was making it past my little ring of hardcore fa-
+ns and out into the culture. No-one was looking at me! At one point I made a bit of a mess of a client's Sat-
+an design and it got posted on that OopsTattoo blog. It got more traction than all my other recent posts com-
+bined. So for the next few months I deliberately started having "accidents" with clients' tattoos. All it go-
+t me was a black eye and a handful of refunds.
+
+I was getting desperate. I needed to be seen again.
+
+That's when I found Oscar Jarrett. He was a pupil of Sutherland Macdonald, do you know anything about him? He
+was this pioneering tattoo artist back in Victorian times - really popular, tattooed Prince Albert's cock or 
+something, and everyone adored him. Anyway. He had a bunch of students and one of them was Oscar Jarrett. I  
+learned later there were all sorts of stories around him, rumours of him doing hand-tapped tattoos with shar-
+pened human bones, mixing strange chemicals into his ink, all that sort of stuff. I doubt any of that's true 
+myself. Don't get me wrong, his work was... [SNORT] unique, but I know better than anyone how important bran-
+ding is. He probably just needed the mystique.
+
+Either way, not many of Jarrett's original designs are still around, and he's not very well remembered. I st-
+umbled across an old photo of one of his designs in a 1930s book. I'd taken to hunting down vintage inkwork  
+books, as people were less likely to notice when I lifted a design from some old obscure artist. My own stuff
+clearly wasn't cutting it, so I had to try something else. Anyway - this photo, it stopped me in my tracks. 
+
+The guy was old, clearly in his 70s or something, but the skin under the ink? Pristine. Smooth as a newborn. 
+And the design was so crisp it might have been done a week before? It was an abstract sun design on his shou-
+lder, shaded in this dull, muted yellow, and there was a black dot in the centre that if you really squinted,
+you could see was an intricate network of crosshatched lines. The round edge of the sun was ragged and wavy, 
+and I could almost feel the warmth of it. It was labelled "Fig. 3. One of the few surviving examples of Oscar
+Jarrett," and I knew right then that I had found the design that was going to save me, that would put me bac-
+k into the spotlight.
+
+He was called Harry, the man who would bear my mark. He'd asked for a "tarot-inspired sun" on his back, and I
+knew this was my best chance. I worked for almost a full week to try and properly copy the design from the p-
+hoto. I didn't quite manage, but it was close enough that it gave me a bit of the same sense of heat. Of cou-
+rse, Harry didn't like it. I think he just wanted a basic riff on the Rider-Waite-Smith deck. So I lied and 
+showed him a safer, tacky magic-shop design that he loved to get him on the table. After all, once he was fa-
+ce-down, I could put whatever I liked into his skin. Don't forget: I'm the artist. He was just the canvas. B-
+esides, I had slaved over that design.
+
+He started screaming about twenty minutes into the session. He said it burned, that it felt like his whole s-
+houlder was on fire. He didn't move, though. It was like he was nailed down as my ink spread across his skin,
+the smell of scorched flesh filling the room. He stopped screaming by the time I finished. Just... whimpers  
+at the end. I cleaned off the blood and took my photos, and for all the smell, it didn't look like there had 
+been any burning at all. Harry stumbled out like the drunk he was, not even bothering to put his shirt back  
+on. At first I was worried for when he'd be back to complain about the design I had actually given him, but -
+I never saw him again. At least, not in person. Saw his picture on a news site though. He'd been killed in a 
+house fire. The story got decent exposure actually.
+
+Didn't matter, though. His part was already done: canvas complete. What mattered was what people thought of  
+the work. And oh, how they loved it! Followers, views, messages and... sponsorships. It wasn't much, really. 
+Almost nothing in cash terms, but it wasn't about the money - I have a small inheritance that takes care of  
+that - it was about the respect. The adulation. The love. They started calling me an "influencer," a "bold n-
+ew voice in skin art." I started making all these connections, hanging out with other influences whose follo-
+w-counts dwarfed even mine! I had arrived.
+
+My old friends didn't get it, of course. They might have even believed it when they said they were worried f-
+or me, that it was out of love, but it was just plain jealousy. Not a great loss to me when they dropped awa-
+y. They were never very photogenic.
+
+But a handful of pictures do not a career make! And so after another lull where I pushed through some more of
+my own designs, I had to admit to myself that - my skill, my real skill, was in adapting Oscar Jarrett. If a-
+nything, I was doing him a favour - nobody remembered him at all, but thanks to me, his designs were fresh a-
+nd relevant. Besides, it's not like he was around to miss out or anything.
+
+Finding other pictures of his designs was difficult, but not impossible. There were a few obscure corners of 
+the central European tattooing scene that had some records of him, and for a while, I was able to get pictur-
+es of ones I hadn't done before. But after those dried up... Well, I'd managed to source an old ledger from 
+his shop that listed most of his clients and I had discovered an interesting little quirk of his ink: none of
+the skin touched by it decayed at all. Even after death, they were all flawless. Soon I had quite the collec-
+tion.
+
+The other problem, of course, was that designs based on Jarrett's originals were brilliant for socials, but 
+not so good for the clients. Those old Victorian inks seemed to last forever, but my adaptations definitely 
+didn't. It was very difficult keeping canvases still on the more complex designs, and after I was done they 
+would usually end up having... grotesque experiences.
+
+That didn't matter so much to me once the pictures were captured and posted online, but after a while, the p-
+olice did notice a definite, if unprovable, connection between my tattoos and a series of... rather disturbi-
+ng accidents. Eventually, it was easier to just use some... chemical cocktails to keep clients quiet, and be-
+come a bit more "nomadic" when it came to studios.
+
+Funny thing, all this only seemed to add to the mystique! The fans ate it up! And all these empty warehouses 
+gave me some space to think and reflect. Everyone wants a piece of you when you're this famous.
+
+I don't remember when my own tattoos began to change. I know it was around the same time I started craving... 
+"the look" more. Not the pleasure in a client's eyes when they see their new skin, but the one I saw just be-
+fore they went under: terror. Helplessness. And the certainty that they would wake up changed in a way they
+could not understand. It filled me up in a way... I can't quite explain, but - I've never felt any other time
+. And as it did so, inside my skin, the ink - There! Do you see it?
+
+Jarrett doesn't matter now. The ink flows through me and out of me, transforming the lucky into something ne-
+wer and more beautiful than their own shallow tastes could ever have conceived.
+
+But... [SIGHS] I don't... understand it. There's something inside me that remembers worrying about... I'm not
+sure. Did I always want to hurt people? To make them afraid? It's so much a part of me now that maybe it alw-
+ays was. Have I changed, or have I simply emerged?
+-------------------------------------------------------------------------------------------------------------
+FR3-d1_OIARSTF_REC_DB
+-------------------------------------------------------------------------------------------------------------
+</template>
+<!-- #endregion -->
+  
+  <!-- Javascript -->
+  <script>  
+    //"filed" variable is an array that stores which incidents have been filed by the user - true for filed, false for unfiled - and is stored in the user's browser cache
+    var filed
+    //if filed variable does not exist within the user's cache (AKA the user has never been to the website before) set all incidents to unfiled. otherwise, set filed variable to its stored values in the cache
+    if (localStorage.getItem("filed") === null) {
+      filed = [false, false, false, false, false, false, false, false, false, false, false, false]
+    } else {
+      filed = JSON.parse(localStorage.filed);
+    }
+    
+    var currentIncident = -1;
+  
+
+    //This project uses the JQuery terminal, and the commands you type into it are defined within this .terminal function. 
+    $('body').terminal({
+
+        // the syntax for a function is:
+        // [function name]: function(parameter1, parameter2...) { [whatever the function does] }
+
+        // the parameters are the values you input into the terminal - for example, when you type "incident 10" into the terminal, you're setting the casenumber parameter to 10.
+        // this.echo('[text]') is a function that writes a line of text into the terminal
+        // "\n" within quotes skips a line of text for formatting
+        help: function(cmd) {
+          if (cmd==null) {
+            this.echo(help.innerHTML);
+          } else {
+            switch (cmd) {
+              case "incident":
+                this.echo('-------------------------------------------------------------------------------------------------------------\nSelect the incident to view. For example, in order to access your first incident, type: \n\n> incident 0\n\nThis will redirect you to a new page containing the incident file.\n-------------------------------------------------------------------------------------------------------------\n');
+                break;
+              case "classifications":
+                this.echo("-------------------------------------------------------------------------------------------------------------\nView a partially digitized version of your classification binder, which lists the different categories an incident may be sorted into. You must choose two different classifications for an incident before you can continue to the dphw command.\n-------------------------------------------------------------------------------------------------------------\n");
+                break;
+              case "dphw":
+                this.echo("-------------------------------------------------------------------------------------------------------------\nYou may get the DPHW code of an incident using two categories chosen from the list under the classifications command. For example, to get the DPHW code of your first incident, type:\n\n> dphw \"reanimation (partial)\" \"regret [email]\"\n\nIf done correctly, the terminal should output the code 5257. Make sure to put quotes around each classification.\n-------------------------------------------------------------------------------------------------------------\n")
+                break;
+              case "file":
+                this.echo("-------------------------------------------------------------------------------------------------------------\nFile away the incident. For example, to correctly file your first case, type:\n\n> file 0 5257\n\nCross-reference with the provided classification binder to ensure you don\'t misfile the incident.\n-------------------------------------------------------------------------------------------------------------\n");
+                break;
+              default:
+                this.echo("No further information about this command.\n")
+                break;
+            }
+          }
+        },
+        about: function() {
+          this.echo('-------------------------------------------------------------------------------------------------------------\nAs an employee of the O.I.A.R., you are responsible for viewing, classifying, and filing various incidents gathered from across the Web by this system, with the aid of the classification binder that should\'ve been provided to you by your superior. In the event that you don\'t have one of these binders, a partial digitalized version of it is available through this program.\n \nthis is a Magnus Protocol fan-project. website originally created by aukiq on tumblr / auki19 on neocities. want to contribute to or be a part of this project? DM aukiq on tumblr, or @sucksnortwheezecackle on discord. all content within each \'incident\' page on this website is owned by Rusty Quill.\n-------------------------------------------------------------------------------------------------------------\n');
+        },
+        incident: function(casenumber) {
+          //check if inputted variable is an integer
+          if (parseInt(Number(casenumber)) == casenumber && casenumber != null) {
+            this.echo('Opening incident #' + casenumber + '...\n')
+            if (casenumber > 23 /*increase this number every time you make a new case so you can access it from the terminal*/) {
+              this.echo('Incident does not exist!\n')
+            } else if (casenumber == 20) {
+              this.echo(incident20.innerHTML);
+            } else {
+              //setTimeout([function], [time]) waits a specified amount of milliseconds, then runs the function
+              //window.open("[link]") opens a link in another window
+              setTimeout('window.open("./case' + casenumber + '/case'+ casenumber +'.html")', 800);
+            }
+          } else {
+            this.echo(".JMJ Error! Please input a number into the incident command. Type 'help incident' for specific help.\n")
+          }
+        },
+        file: function(casenumber, casecode) {
+
+          if (casenumber == null || casecode == null) {
+            this.echo(".JMJ Error! Please input an incident number and its corresponding DPHW code into the file command. Type 'help file' for specific help.\n")
+            return;
+          }
+
+          var correct;
+          switch (casenumber) {
+            default:
+              this.echo('Incident does not exist!\n')
+              return;
+              break;
+            case 0:
+              //set correct to true if the casecode matches the correct dphw (or the entire classification found in the episode description. it's impossible to do it that way for now other than through copy-pasting from the episode description, but I'm including it as an option so that if we ever do learn how the classification works, I can make them do the whole thing instead of just the dphw without having to go back and redo everything later yk)
+              correct = casecode == 'CAT1RBC5257-12052022-09012024' || casecode == '5257'
+              break;
+            case 1:
+              correct = casecode == 'CAT23RAB2155-10042022-09012024' || casecode == '2155'
+              break;
+            case 2:
+              correct = casecode == 'CAT3RBC1567-23092022-18012024' || casecode == '1567'
+              break;
+            case 3:
+              correct = casecode == 'CAT2C8175-03042009-22012024' || casecode == '8175'
+              break;
+            case 4:
+              correct = casecode == 'CAT3C7494-19111831-29012024' || casecode == '7494'
+              break;
+            case 5:
+              correct = casecode == 'CAT2RB2377-10012023-05022024' || casecode == '2377'
+              break;
+            case 6:
+              correct = casecode == 'CAT1RB4824-09022024-12022024' || casecode == '4824'
+              break;
+            case 7:
+              correct = casecode == 'CAT2RC3338-03022016-12022024' || casecode == '3338'
+              break;
+            case 8:
+              correct = casecode == 'CAT2RBC3366-12072023-28022024' || casecode == '3366'
+              break;
+            case 9:
+              correct = casecode == 'CAT3RB3354-14101998-08032024' || casecode == '3354'
+              break;
+            case 10:
+              correct = casecode == 'CAT1RB2275-06082021-09032024' || casecode == '2275'
+              break;
+            case 11:
+              correct = casecode == 'CAT23RC5246-06012020-11032024' || casecode == '5246'
+              break;
+            case 12:
+              correct = casecode == 'CAT1RB4728-09032024-13032024' || casecode == '4728'
+              break;
+            case 13:
+              correct = casecode == 'CAT3RB4622-17092023-14032024' || casecode == '4622'
+              break;
+            case 14:
+              correct = casecode == 'CAT1RB4426-01081995-15032024' || casecode == '4426'
+              break;
+            case 15:
+              correct = casecode == 'CAT1RB6451-22062023-22032024' || casecode == '6451'
+              break;
+            case 16:
+              correct = casecode == 'CAT1RB1565-30102023-25032024' || casecode == '1565'
+              break;
+            case 17:
+              correct = casecode == 'CAT2RC1147-30111997-04042024' || casecode == '1147'
+              break;
+            case 18:
+              correct = casecode == 'CAT1RC2374-20032024-10042024' || casecode == '2374'
+              break;
+            case 19:
+              correct = casecode == 'CAT13RBC1137-21031684-11042024' || casecode == '1137'
+              break;
+            case 20:
+              correct = casecode == 'CAT1RC2534-20032024-10042024' || casecode == '2534'
+              break;
+            case 21: 
+              correct = casecode == 'CAT2RBC4254-04011998-12042024' || casecode == '4254'
+              break;
+            case 23:
+              correct = casecode == 'CAT13RBC3536-20062018-18042024' || casecode == '3536'
+              break;
+          }
+          if (correct == true) {
+            this.echo("Incident filed!\n")
+            //if the case was filed correctly, set the case's index in the filed variable to true, and store the updated filed variable in the user's cache so it saves when they close the page
+            filed[casenumber] = true;
+            localStorage.filed = JSON.stringify(filed);
+          } else {
+            this.echo("Incident misfiled, try again!\n")
+          }
+        },
+        dphw: function(c1Upper, c2Upper) {
+          //generate a random 4 digit placeholder number
+          var dphw = Math.floor(1111 + Math.random() * 8888);;
+          
+          if (c1Upper == null || c2Upper == null) {
+            this.echo("Wrong format! (Are you inputting the correct number of arguments? Refer to the classifications command for the correct syntax, or type 'help dphw' for more specific help.)\n")
+            return;
+          }
+
+          //make it not caps-sensitive
+          var c1 = c1Upper.toLowerCase()
+          var c2 = c2Upper.toLowerCase()
+
+          
+          
+          //if the entered strings are a combination that exists, set the dphw value to the correct dphw for that episode. otherwise the dphw value will remain as the randomly-generated 4 digit number (meaning they'll get a misfile)
+          if ((c1 == "reanimation (partial)" && c2 == "regret [email]") || (c2 == "reanimation (partial)" && c1 == "regret [email]")) {
+            dphw = 5257
+          } else if ((c1 == "transformation (eyes)" && c2 == "trespass [chat log]") || (c2 == "transformation (eyes)" && c1 == "trespass [chat log]")) {
+            dphw = 2155
+          } else if ((c1 == "transformation (full)" && c2 == "dysmorphic [video call]") || (c2 == "transformation (full)" && c1 == "dysmorphic [video call]")) {
+            dphw = 1567
+          } else if ((c1 == "infection (full body)" && c2 == "arboreal [journal entry]") || (c2 == "infection (full body)" && c1 == "arboreal [journal entry]")) {
+            dphw = 8175
+          } else if ((c1 == "collection (blood)" && c2 == "musical [letter]") || (c2 == "collection (blood)" && c1 == "musical [letter]")) {
+            dphw = 7494
+          } else if ((c1 == "disappearance (undetermined)" && c2 == "invitation [internet blog]") || (c2 == "disappearance (undetermined)" && c1 == "invitation [internet blog]")) {
+            dphw = 2377
+          } else if ((c1 == "injury (needles)" && c2 == "intimidation [999 call]") || (c2 == "injury (needles)" && c1 == "intimidation [999 call]")) {
+            dphw = 4824
+          } else if ((c1 == "agglomeration (miscellany)" && c2 == "congregation [email]") || (c2 == "agglomeration (miscellany)" && c1 == "congregation [email]")) {
+            dphw = 3338
+          } else if ((c1 == "architecture (liminal)" && c2 == "hunger [coursework]") || (c2 == "architecture (liminal)" && c1 == "hunger [coursework]")) {
+            dphw = 3366
+          } else if ((c1 == "dice (bone)" && c2 == "fate [magnus statement]") || (c2 == "dice (bone)" && c1 == "fate [magnus statement]")) {
+            dphw = 3354
+          } else if ((c1 == "mascot (kids)" && c2 == "murder [tv interview]") || (c2 == "mascot (kids)" && c1 == "murder [tv interview]")) {
+            dphw = 2275
+          } else if ((c1 == "tattoo (corpse)" && c2 == "compulsion [email exchange]") || (c2 == "tattoo (corpse)" && c1 == "compulsion [email exchange]")) {
+            dphw = 5246
+          } else if ((c1 == "mascot (kids)" && c2 == "frenzy [insurance claim]") || (c2 == "mascot (kids)" && c1 == "frenzy [insurance claim]")) {
+            dphw = 4728
+          } else if ((c1 == "gambling (application)" && c2 == "self-destruction [voicemail]") || (c2 == "gambling (application)" && c1 == "self-destruction [voicemail]")) {
+            dphw = 4622
+          } else if ((c1 == "transformation (snake)" && c2 == "horde [report]") || (c2 == "transformation (snake)" && c1 == "horde [report]")) {
+            dphw = 4426
+          } else if ((c1 == "hunt (aristocratic)" && c2 == "compulsion [voicemail]") || (c2 == "hunt (aristocratic)" && c1 == "compulsion [voicemail]")) {
+            dphw = 6451
+          } else if ((c1 == "tattoo (influencer)" && c2 == "cardiac [video blog]") || (c2 == "tattoo (influencer)" && c1 == "cardiac [video blog]")) {
+            dphw = 1565
+          } else if ((c1 == "doppleganger (interdimensional)" && c2 == "murder [magnus statement]") || (c2 == "doppleganger (interdimensional)" && c1 == "murder [magnus statement]")) {
+            dphw = 1147
+          } else if ((c1 == "memory (derelict)" && c2 == "compulsion [autopsy report]") || (c2 == "memory (derelict)" && c1 == "compulsion [autopsy report]")) {
+            dphw = 2374
+          } else if ((c1 == "transformation (canine)" && c2 == "growth (crystalline) [letter]") || (c2 == "transformation (canine)" && c1 == "growth (crystalline) [letter]")) {
+            dphw = 1137
+          } else if ((c1 == "transformation (tattoo)" && c2 == "social media (influencer) [recording]") || (c2 == "transformation (tattoo)" && c1 == "social media (influencer) [recording]")) {
+            dphw = 2534
+          } else if ((c1 == "architecture (landmark)" && c2 == "corruption (entropy) [letter]") || (c2 == "Architecture (landmark)" && c1 == "corruption (entropy) [letter]")){
+            dphw = 4254
+          } else if ((c1 == "transformation (dysmorphic)" && c2 == "doppelganger (infection) [internet blog]") || (c2 == "transformation (dysmorphic)" && c1 == "doppelganger (infection) [internet blog]")){
+            dphw = 3536
+          } else if ((c1 == "" && c2 == "") || (c2 == "" && c1 == "")) {
+            dphw = 0
+          }
+          
+          //print out dphw code
+          this.echo('DPHW for combination "' + c1Upper + ' -/- ' + c2Upper + '": ' + dphw + "\n");
+          
+        },
+        classifications: function () {
+          this.echo(binder.innerHTML);
+        },
+        archive: function () {
+          this.echo('-------------------------------------------------------------------------------------------------------------');
+          //show details of a case if it's been filed, otherwise mark as unfiled
+          if (filed[0]) {
+            this.echo('Incident #0:  "reanimation (partial) -/- regret [email]"                                       | DPHW: 5257');
+          } else { this.echo('Incident #0: Unfiled!'); }
+          if (filed[1]) {
+            this.echo('Incident #1:  "transformation (eyes) -/- trespass [chat log]"                                  | DPHW: 2155');
+          } else { this.echo('Incident #1: Unfiled!'); }
+          if (filed[2]) {
+            this.echo('Incident #2:  "transformation (full) -/- dysmorphic [video call]"                              | DPHW: 1567');
+          } else { this.echo('Incident #2: Unfiled!'); }
+          if (filed[3]) {
+            this.echo('Incident #3:  "infection (full body) -/- arboreal [journal entry]"                             | DPHW: 8175');
+          } else { this.echo('Incident #3: Unfiled!'); }
+          if (filed[4]) {
+            this.echo('Incident #4:  "collection (blood) -/- musical [letter]"                                        | DPHW: 7494');
+          } else { this.echo('Incident #4: Unfiled!'); }
+          if (filed[5]) {
+            this.echo('Incident #5:  "disappearance (undetermined) -/- invitation [internet blog]"                    | DPHW: 2377');
+          } else { this.echo('Incident #5: Unfiled!'); }
+          if (filed[6]) {
+            this.echo('Incident #6:  "injury (needles) -/- intimidation [999 call]"                                   | DPHW: 4824');
+          } else { this.echo('Incident #6: Unfiled!'); }
+          if (filed[7]) {
+            this.echo('Incident #7:  "agglomeration (miscellany) -/- congregation [email]"                            | DPHW: 3338');
+          } else { this.echo('Incident #7: Unfiled!'); }
+          if (filed[8]) {
+            this.echo('Incident #8:  "architecture (liminal) -/- hunger [coursework]"                                 | DPHW: 3366');
+          } else { this.echo('Incident #8: Unfiled!'); }
+          if (filed[9]) {
+            this.echo('Incident #9:  "dice (bone) -/- fate [magnus statement]"                                        | DPHW: 3354');
+          } else { this.echo('Incident #9: Unfiled!'); }
+          if (filed[10]) {
+            this.echo('Incident #10: "mascot (kids) -/- murder [TV interview]"                                        | DPHW: 2275');
+          } else { this.echo('Incident #10: Unfiled!'); }
+          if (filed[11]) {
+            this.echo('Incident #11: "tattoo (corpse) -/- compulsion [email exchange]"                                | DPHW: 5246');
+          } else { this.echo('Incident #11: Unfiled!'); }
+          if (filed[12]) {
+            this.echo('Incident #12: "mascot (kids) -/- frenzy [insurance claim]"                                     | DPHW: 4728');
+          } else { this.echo('Incident #12: Unfiled!'); }
+          if (filed[13]) {
+            this.echo('Incident #13: "gambling (application) -/- self-destruction [voicemail]"                        | DPHW: 4622');
+          } else { this.echo('Incident #13: Unfiled!'); }
+          if (filed[14]) {
+            this.echo('Incident #14: "transformation (snake) -/- horde [report]"                                      | DPHW: 4426');
+          } else { this.echo('Incident #14: Unfiled!'); }
+          if (filed[15]) {
+            this.echo('Incident #15: "hunt (aristocratic) -/- compulsion [voicemail]"                                 | DPHW: 6451');
+          } else { this.echo('Incident #15: Unfiled!'); }
+          if (filed[16]) {
+            this.echo('Incident #16: "tattoo (influencer) -/- cardiac [video blog]"                                   | DPHW: 1565');
+          } else { this.echo('Incident #16: Unfiled!'); }
+          if (filed[17]) {
+            this.echo('Incident #17: "doppleganger (interdimensional) -/- murder [magnus statement]"                  | DPHW: 1147');
+          } else { this.echo('Incident #17: Unfiled!'); }
+          if (filed[18]) {
+            this.echo('Incident #18: "memory (derelict) -/- compulsion [autopsy report]"                              | DPHW: 2374');
+          } else { this.echo('Incident #18: Unfiled!'); }
+          if (filed[19]) {
+            this.echo('Incident #19: "transformation (canine) -/- growth (crystalline) [letter]"                      | DPHW: 1137');
+          } else { this.echo('Incident #19: Unfiled!'); }
+          if (filed[20]) {
+            this.echo('Incident #20: "transformation (tattoo) -/- social media (influencer) [recording]"              | DPHW: 2534');
+          } else { this.echo('Incident #20: Unfiled!'); }
+          if (filed[21]){
+            this.echo('Incident #21: "architecture (landmark) -/- corruption (entropy) [letter]"                      | DPHW: 4254');
+          } else { this.echo ('Incident #21: Unfiled!');}
+          if (filed[21]){
+            this.echo('Incident #23: "tranformation (dysmorphic) -/- doppelganger (infection) [internet blog]"        | DPHW: 3536');
+          } else { this.echo ('Incident #23: Unfiled!');}
+          this.echo('-------------------------------------------------------------------------------------------------------------\n');
+        },
+        start: function(program) {
+          if (program == "ushankas_despair.exe") {
+            this.echo('PHOTOSENSITIVITY WARNING! close tab to cancel\n')
+            setTimeout("open('./ushankas_despair.html', '_self')", 3000);
+          }
+        },
+        explorer: function() {
+          this.echo('&#128447; Executables: \n' + 
+          '   &#8627; ushankas_despair.exe \n')
+        },
+        
+        test: function() {
+          this.echo("no argument");
+        },
+        test: function(x) {
+          this.echo(x);
+        }
+        
+    }, {
+        greetings: greetings.innerHTML,
+        checkArity: false
+    });
+    
+    
+  </script>
+</body>
+</html>
