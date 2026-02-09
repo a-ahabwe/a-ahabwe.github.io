@@ -60,11 +60,11 @@ h3 { font-size: 22px; }
 a {
   color: $blue;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
+  // border-bottom: 1px solid transparent;
   transition: all 0.2s ease-in-out;
   &:hover {
     color: $darkGray;
-    border-bottom: 1px solid $blue;
+    // border-bottom: 1px solid $blue;
   }
 }
 
@@ -93,7 +93,7 @@ img {
 
 .masthead {
   padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
+  // border-bottom: 1px solid $lightGray;
 }
 
 .site-avatar {
