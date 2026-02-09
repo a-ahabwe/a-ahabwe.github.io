@@ -4,7 +4,7 @@ title: Research
 permalink: /research/
 ---
 
-## Research Journey
+## My Research Journey
 
 I am a Biomedical and AI Engineer currently bridging the gap between signal processing, machine learning, and neural data analysis. My research focus is on building inclusive healthcare technology and understanding neural circuits through computational modeling.
 
