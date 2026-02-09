@@ -1,6 +1,6 @@
 # Hi, I'm Ahabwe! ✨ 
 
-I'm an engineer 👩🏽‍💻 working across **AI, machine learning, and real-world system deployment**. My background blends **biomedical engineering**, **applied AI**, and **hands-on product experimentation**, from building digital health tools to designing reinforcement learning environments and playful side projects.
+I'm an engineer 👩🏽‍💻 working across **AI, machine learning, computational neuroscience and real-world system deployment**. My background blends **biomedical engineering**, **applied AI**, and **hands-on product experimentation**, from building digital health tools, working with neural data to designing reinforcement learning game environments and fun side projects.
 
 I love building ✨:
 
@@ -10,6 +10,7 @@ I love building ✨:
 * **Data pipelines & analytics tools** that power decision-making.
 * **Experimental passion projects**, like **FR3-D1**, from the podcast **The Magnus Protocol**.
 * **RL simulations**, like my human-veto tactical wargame.
+* **Digital Twin Simulation**, like the ADHD twin using EEG data
 * **Clinical and lab technology workflows** for hospitals and distributed health networks.
 
 💡 I love solving problems that sit at the intersection of people, data, and technology.
