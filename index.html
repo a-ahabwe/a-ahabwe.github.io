@@ -2,17 +2,31 @@
 layout: default
 ---
 
-<div class="posts">
-  {% for post in site.posts %}
-    <article class="post">
+<div class="welcome-section" style="line-height: 1.6;">
+  <h2>Welcome to my little corner of the interwebs.</h2>
 
-      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+  <p>In my professional life, I am an <strong>AI Engineer & Computational Neuroscientist</strong>. I spend most of my time bridging the gap between machine learning and neuro-health, making sure the future of tech is as inclusive as possible.</p>
 
-      <div class="entry">
-        {{ post.excerpt }}
-      </div>
+  <h3>Serious Things</h3>
+  <p>
+    <a href="{{ site.baseurl }}/about">My Story</a> | 
+    <a href="{{ site.baseurl }}/projects">Fun Projects</a> | 
+    <a href="LINK_TO_YOUR_PDF_HERE">CV</a> | 
+    <a href="{{ site.baseurl }}/research">Research Interests</a>
+  </p>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
-    </article>
-  {% endfor %}
+  <h3>Not-so-serious Things</h3>
+  <p>When I'm not deep in EEG data or AI models, I'm probably thinking about mental health awareness or navigating life in Rwanda.</p>
+
+  <hr style="margin: 40px 0;">
+
+  <p>Interested in reading on? Here's a little menu of what's here:</p>
+  <ul>
+    <li>A summary of the <strong>research</strong> I do in Computational Neuroscience.</li>
+    <li>Details on <strong>Sevo Clips</strong>: making EEG hardware inclusive for African hair textures.</li>
+    <li>My <strong>CV</strong> (in case you want to offer me one of those research roles I keep hearing about...).</li>
+  </ul>
+
+  <p>You can contact me here: <strong>yourname "at" gmail "dot" com</strong></p>
+  <p><small>Last updated: February 2026</small></p>
 </div>
