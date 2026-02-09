@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updates & Live-posting - Finding My Piece</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .forum-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 2px solid #4a5568;
+        }
+        
+        .forum-title {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .forum-subtitle {
+            color: #a0a0a0;
+            font-size: 0.9em;
+        }
+        
+        .post-container {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+        }
+        
+        .post {
+            padding: 25px;
+            border-bottom: 1px solid #4a5568;
+            position: relative;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.85em;
+            color: #a0a0a0;
+        }
+        
+        .post-registration {
+            background: rgba(255, 107, 107, 0.1);
+            padding: 8px 12px;
+            border-radius: 5px;
+            border-left: 3px solid #ff6b6b;
+        }
+        
+        .post-number {
+            background: rgba(74, 85, 104, 0.3);
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .post-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #ffd93d;
+            margin-bottom: 15px;
+        }
+        
+        .post-content {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .post-content p {
+            margin-bottom: 12px;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(74, 85, 104, 0.2);
+            border: 1px solid #4a5568;
+            color: #e0e0e0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .action-btn:hover {
+            background: rgba(74, 85, 104, 0.4);
+            border-color: #6b7280;
+            transform: translateY(-1px);
+        }
+        
+        .like-btn {
+            border-color: #ff6b6b;
+        }
+        
+        .like-btn:hover {
+            background: rgba(255, 107, 107, 0.1);
+            border-color: #ff6b6b;
+        }
+        
+        .comment-btn {
+            border-color: #4ecdc4;
+        }
+        
+        .comment-btn:hover {
+            background: rgba(78, 205, 196, 0.1);
+            border-color: #4ecdc4;
+        }
+        
+        .action-count {
+            font-weight: bold;
+            color: inherit;
+        }
+        
+        .like-icon, .comment-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        
+        .username {
+            color: #ffd93d;
+            font-weight: bold;
+        }
+        
+        .timestamp {
+            font-style: italic;
+        }
+        
+        .comment-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #4a5568;
+            display: none;
+        }
+        
+        .comment-thread {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 15px;
+        }
+        
+        .comment-item {
+            padding: 15px;
+            border-bottom: 1px solid #4a5568;
+            margin-bottom: 10px;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.8em;
+            color: #a0a0a0;
+        }
+        
+        .comment-content {
+            color: #c0c0c0;
+            line-height: 1.4;
+        }
+        
+        .no-comments {
+            text-align: center;
+            color: #a0a0a0;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        .back-btn {
+            background: rgba(74, 85, 104, 0.3);
+            border: 1px solid #4a5568;
+            color: #e0e0e0;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .back-btn:hover {
+            background: rgba(74, 85, 104, 0.5);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="forum-header">
+            <div class="forum-title">FORUM THREAD: Updates & Live-posting</div>
+            <div class="forum-subtitle">Community support and documentation space</div>
+        </div>
+        <div class="page-container">
+            <a href="user-profile.html" class="back-btn">← Back to Alnewman86</a>
+        
+        <div class="post-container">
+            <div class="post">
+                <div class="post-meta">
+                    <div class="post-registration">
+                        <span class="username">Alnewman86</span> <span class="timestamp">(03-09-18, 02:22)</span>
+                    </div>
+                    <!-- <div class="post-number">POST #13: <span class="timestamp">(03-09-18, 02:22)</span></div> -->
+                </div>
+                
+                <div class="post-title">POST #13: Alesis Newman Final</div>
+                
+                <div class="post-content">
+                    <p>Writing with my eyes now. The last parts of me float away. She lays where I lay but she is not me. She is strong. She is graceful. She is bright in mind and color and I love her, more than I thought I could love anything.</p>
+                    
+                    <p>I want you all to know before my skull pulls apart… you were</p>
+                    
+                </div>
+                
+                <div class="post-actions">
+                    <button class="action-btn like-btn" onclick="toggleLike()">
+                        <svg class="like-icon" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="action-count" id="like-count">515</span>
+                    </button>
+                    
+                    <button class="action-btn comment-btn" onclick="toggleComments()">
+                        <svg class="comment-icon" viewBox="0 0 24 24">
+                            <path d="M21,6C21,4.89 20.11,4 19,4H5A2,2 0 0,0 3,6V14A2,2 0 0,0 5,16H16L21,21V6Z"/>
+                        </svg>
+                        <span class="action-count" id="comment-count">37</span>
+                    </button>
+                </div>
+                
+                <div class="comment-section" id="comment-section">
+                    <div class="comment-thread">
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">SymphonyOfBones</strong></span>
+                                <span>(03-09-18, 02:45)</span>
+                            </div>
+                            <div class="comment-content">
+                                A, are you still there? This doesn't sound like you. The transformation isn't supposed to work like this...
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">VesselSeeker92</strong></span>
+                                <span>(03-09-18, 03:17)</span>
+                            </div>
+                            <div class="comment-content">
+                                This is beautiful. The way she describes the separation... I think she's finally achieved what we've all been working toward.
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">ModeratorSarah</strong></span>
+                                <span>(03-09-18, 04:33)</span>
+                            </div>
+                            <div class="comment-content">
+                                @Alnewman86 please respond when you can. The community is concerned about the abrupt ending to your post.
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">PieceCollector</strong></span>
+                                <span>(03-09-18, 06:12)</span>
+                            </div>
+                            <div class="comment-content">
+                                The transition is complete. She's not Alesis anymore - she's something better. I can see it in the way the words change mid-sentence.
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">EmptyVessel_awaiting</strong></span>
+                                <span>(03-09-18, 07:28)</span>
+                            </div>
+                            <div class="comment-content">
+                                "Writing with my eyes now" - does anyone else understand what this means? I've been trying to figure out the mechanics...
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">ReplacementReady</strong></span>
+                                <span>(03-09-18, 09:45)</span>
+                            </div>
+                            <div class="comment-content">
+                                The way she talks about loving "her" more than anything... this is what transcendence looks like. I'm so envious.
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">AnatomyStudent_Jess</strong></span>
+                                <span>(03-09-18, 11:22)</span>
+                            </div>
+                            <div class="comment-content">
+                                Has anyone checked on her? The timestamp shows this was posted at 2 AM. Something about "skull pulls apart" is concerning me.
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">BetterThanBefore</strong></span>
+                                <span>(03-09-18, 13:07)</span>
+                            </div>
+                            <div class="comment-content">
+                                @AnatomyStudent_Jess You're missing the point. She's not "her" anymore. The old Alesis is gone, and what's left is perfection.
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">SeekingCompletion</strong></span>
+                                <span>(03-09-18, 15:31)</span>
+                            </div>
+                            <div class="comment-content">
+                                The poetry in this final post... "the last parts of me float away." I've read it seventeen times now and it gets more beautiful each time.
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ffd93d;">FragmentedButWhole</strong></span>
+                                <span>(03-09-18, 18:44)</span>
+                            </div>
+                            <div class="comment-content">
+                                I've been following A's journey from the beginning. This transformation is exactly what the process is supposed to achieve. Congratulations to whoever she's become.
+                            </div>
+                        </div>
+                        
+                        <div class="comment-item">
+                            <div class="comment-header">
+                                <span><strong style="color: #ff6b6b;">Alnewman86</strong></span>
+                                <span>(03-09-18, 19:52)</span>
+                            </div>
+                            <div class="comment-content">
+                                Thank you all for your concern. I am well. Better than well. The process is complete and I am grateful for this community's guidance. A new chapter begins.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let likeCount = 515;
+        let liked = false;
+        let commentsVisible = false;
+
+        function toggleLike() {
+            const likeBtn = document.querySelector('.like-btn');
+            const likeCountElement = document.getElementById('like-count');
+            
+            if (!liked) {
+                likeCount++;
+                liked = true;
+                likeBtn.style.background = 'rgba(255, 107, 107, 0.2)';
+                likeBtn.style.color = '#ff6b6b';
+            } else {
+                likeCount--;
+                liked = false;
+                likeBtn.style.background = 'rgba(74, 85, 104, 0.2)';
+                likeBtn.style.color = '#e0e0e0';
+            }
+            
+            likeCountElement.textContent = likeCount;
+        }
+
+        function toggleComments() {
+            const commentSection = document.getElementById('comment-section');
+            commentsVisible = !commentsVisible;
+            
+            if (commentsVisible) {
+                commentSection.style.display = 'block';
+            } else {
+                commentSection.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

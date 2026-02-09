@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+      .center {
+      margin: auto;
+      width: 850px;
+      border: 1px solid lightgrey;
+      padding: 10px;
+      }
+      h3 {
+      font-family: Helvetica;
+      margin-top: 3px;
+      margin-bottom: 10px;
+      }
+      hr {
+      color: lightgrey;
+      border-width: 1px;
+      }
+      input {
+      display: none;
+      }
+      .book {
+      display: flex;
+      }
+      #cover {
+      width: 425px;
+      height: 600px;
+      background-color: #0000;
+      }
+      .flip-book {
+      width: 425px;
+      height: 600px;
+      position: relative;
+      perspective: 1500px;
+      background-color: #0000;
+      }
+      .flip {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: center left;
+      transform-style: preserve-3d;
+      transition: 0.5s;
+      color: #000;
+      }
+      .front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: moccasin;
+      box-sizing: border-box;
+      padding: 0 13px;
+      }
+      .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      background-color: moccasin;
+      }
+      .next-btn {
+      position: absolute;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 4px;
+      bottom: 13px;
+      right: 13px;
+      cursor: pointer;
+      color: #000;
+      }
+      .back-btn {
+      position: absolute;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 4px;
+      bottom: 13px;
+      right: 13px;
+      cursor: pointer;
+      color: #000;
+      }
+      #p1 {
+      z-index: 9;
+      margin: 5px;
+      }
+      #p2 {
+      z-index: 8;
+      margin: 5px;
+      }
+      #p3 {
+      z-index: 7;
+      margin: 5px;
+      }
+      #p4 {
+      z-index: 6;
+      margin: 5px;
+      }
+      #p5 {
+      z-index: 5;
+      margin: 5px;
+      }
+      #p6 {
+      z-index: 4;
+      margin: 5px;
+      }
+      #p7 {
+      z-index: 3;
+      margin: 5px;
+      }
+      #p8 {
+      z-index: 2;
+      margin: 5px;
+      }
+      #p9 {
+      z-index: 1;
+      margin: 5px;
+      }
+      
+      #c1:checked ~ .flip-book #p1 {
+      transform: rotateY(-180deg);
+      z-index: 1;
+      }
+      #c2:checked ~ .flip-book #p2 {
+      transform: rotateY(-180deg);
+      z-index: 2;
+      }
+      #c3:checked ~ .flip-book #p3 {
+      transform: rotateY(-180deg);
+      z-index: 3;
+      }
+      #c4:checked ~ .flip-book #p4 {
+      transform: rotateY(-180deg);
+      z-index: 4;
+      }
+      #c5:checked ~ .flip-book #p5 {
+      transform: rotateY(-180deg);
+      z-index: 5;
+      }
+      #c6:checked ~ .flip-book #p6 {
+      transform: rotateY(-180deg);
+      z-index: 6;
+      }
+      #c7:checked ~ .flip-book #p7 {
+      transform: rotateY(-180deg);
+      z-index: 7;
+      }
+      #c8:checked ~ .flip-book #p8 {
+      transform: rotateY(-180deg);
+      z-index: 8;
+      }
+      #c9:checked ~ .flip-book #p9 {
+      transform: rotateY(-180deg);
+      z-index: 9;
+      }
+      #c3:checked ~ .flip-book #p1 {
+      display: none;
+      }
+      #c4:checked ~ .flip-book #p2 {
+      display: none;
+      }
+      #c5:checked ~ .flip-book #p3 {
+      display: none;
+      }
+      #c6:checked ~ .flip-book #p4 {
+      display: none;
+      }
+      #c7:checked ~ .flip-book #p5 {
+      display: none;
+      }
+      #c8:checked ~ .flip-book #p6 {
+      display: none;
+      }
+      #c9:checked ~ .flip-book #p7 {
+      display: none;
+      }
+      .bb{
+      position: absolute;
+      z-index: -1;
+      width: 850px;
+      height: 600px;
+      pointer-events: none;
+      }
+      #c1:checked ~ .bb {
+      border: 5px solid #57341b;
+      background-color:  #e9c88e;
+      }
+      #c2:checked ~ .bb {
+      border: 5px solid #57341b;
+      }
+      #c3:checked ~ .bb {
+      border: 5px solid #57341b;
+      }
+      #c4:checked ~ .bb {
+      border: 5px solid #57341b;
+      }
+      #c5:checked ~ .bb {
+      border: 5px solid #57341b;
+      }
+      #c6:checked ~ .bb {
+      border: 5px solid #57341b;
+      }
+      #c7:checked ~ .bb {
+      border: 5px solid #57341b;
+      }
+      #c8:checked ~ .bb {
+      border: 5px solid #57341b;
+      }
+      #c9:checked ~ .bb {
+      border: none;
+      background-color: transparent;
+      }
+      .journal {
+      text-align: justify; 
+      padding: 0 13px;
+      }
+    </style>
+  </head>
+  <body style="background-color: #262626">
+    <div class="center" style="background-color: navy; margin-bottom: 0px; padding-top:1px; padding-bottom:1px;">
+      <table>
+        <tr>
+          <td width="125px">
+            <img src="./police.png" width="80px">
+          </td>
+          <td width="500px">
+            <h1 style="color: white; margin: 5px"> London Police </h1>
+            <p style="color: white; margin: 5px">Internal Evidence Database</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="center" style="background-color:white; margin-top: 0px">
+      <p style="white-space:pre-wrap;"><b>Case:</b> 1201/19, Homicide <span style="float: right;"><b>Serial No:</b> 72003210</span>
+      <hr>
+      <!--
+        --><b>Collection:</b> Kent CID Repository 
+      <hr>
+      <!--
+        --><b>Item:</b> Journal of Dr. Samuel Webber, age 46. Issued by grief counselor Harriot Manning. Found within a water-damaged black briefcase, partially buried, penetrated by mouldy roots.
+      <hr>
+      <!--
+        --><b>Additional Contents:</b> Water-damaged smartphone. Wallet with Dr. Webber’s ID and visa card. Keys on a gold chain for 13 Marigold Drive. Partial medical files on Gerald Andrews – age 37, of 12 Castlehill Avenue – and Maddie Webber – age 39, deceased.
+      <hr>
+      <!--
+        --><b>Collector:</b> Special Constable Caroline Jennings, 2911
+      <hr>
+      <!--
+        --><b>Routing to:</b> South-East Evidence Storage, Lewisham
+      <hr>
+      Relevant journal entries as follows:
+      </p>
+    </div>
+    <div class="book" style="justify-content: center;
+      align-items: center;
+      text-align:center; 
+      margin-top:10px; margin-bottom:40px;">
+      <input type="checkbox" id="c1">
+      <input type="checkbox" id="c2">
+      <input type="checkbox" id="c3">
+      <input type="checkbox" id="c4">
+      <input type="checkbox" id="c5">
+      <input type="checkbox" id="c6">
+      <input type="checkbox" id="c7">
+      <input type="checkbox" id="c8">
+      <input type="checkbox" id="c9">
+      <div class="bb"></div>
+      <div id="cover"></div>
+      <div class="flip-book">
+        <div class="flip" id="p1">
+          <div class="back" style="">
+            <h3 style="font-family: 'Times New Roman'">07/12/09, 10:03 PM</h3>
+            <p class="journal">
+              Today was bedlam. I had it all planned out, all of it! And then a panic attack just choked the nerve out of me. It was so humiliating! Felt like the ground was going to swallow me whole with everyone staring at me, only to roll their eyes at my “hysterics,” as the paramedic put it. They don’t understand. I was so close to getting caught… But it’s done. All I need to do now is disappear. <br><br>
+              I can’t go home. Not for a few days at least. And I’ll have to avoid the usual haunts until they forget about me again. That won’t be difficult, what’s one more stressed doctor. Just a grey man in the crowd, unnoticed until I’m useful. <br><br>
+              One man kept staring at me on the tube. He looked like he was connecting the dots… I’m paranoid, I know, lying low amongst wildflowers in an overgrown garden. The mud has ruined my shoes. <br><br>
+              There’s not much in my briefcase. Still, listing helps keep it all straight:
+            <ul style="text-align: left; padding: 0 30px;">
+              <li>Files on “the star-crossed couple”</li>
+              <li>Monday morning’s rounds – I hope Mrs. Campbell’s op went okay</li>
+            </ul>
+            </p>
+            <label class="back-btn" for="c1">Back</label>
+          </div>
+          <div class="front" style="height: 600px; width: 425px; background:#57341b; color:white;">
+            <h1></h1>
+            <h2></h2>
+            <h3></h3>
+            <label class="next-btn" for="c1" style="color:white;border:1px solid white;">Open</label>
+          </div>
+        </div>
+        <div class="flip" id="p2">
+          <div class="back">
+            <p class="journal">
+              I remember now. It was the jasmine. That perfume in the drizzling rain that drew me in. It reminds me so much of her. <br><br>
+              Maddie loved the scent of jasmine. Loved to garden. She would have adored this place, tucked away amongst the ugly brick backstreets.<br><br>
+              She would have quizzed me about the plants, and I would have told her I didn’t know. I didn’t even know gardens could bloom this late in the year.<br><br>
+              I wasn’t really thinking when I pushed my way through the gates. Just following my nose to memories of happier times, I suppose. The scent is much more pungent here than it was outside, an almost overwhelming sickly-sweet rot amongst the bushes. Maddie would know what it was. But it’s dark and quiet, that’s the main thing.<br><br>
+              The garden seems unmanaged, which suits me fine. It’s growing wild around the ruins of some bombed-out church. Nice to see nature, healing old wounds.<br><br>
+              I scratched up my hands and face fighting past the bushes beneath one of the old arches. I’m cold but it’s worth it; no one will find me here.<br><br>
+            </p>
+            <label class="back-btn" for="c2">Back</label>
+          </div>
+          <div class="front">
+            <ul style="text-align: left; padding: 0 30px;">
+              <li>Nine Werther’s Originals (because at some point I became an old man and didn’t notice)</li>
+              <li>Pens, prescription pads</li>
+              <li>Oyster card – still valid</li>
+              <li>23-pounds-22 cash – thought it was 24, but one of the coins was a worn-down euro. Not sure what the exchange rate is…</li>
+              <li>This journal, obviously. Thank you, counselor – I’m more likely to use it for kindling than “expressing my feelings”</li>
+              <li>And my phone. 43% battery, 1 bar. They can track SIM cards, can’t they? I should probably destroy it. Better cut off than caught.</li>
+            </ul>
+            <p class="journal">
+              It’s almost midnight. (Why isn’t it darker?) I didn’t pack a lunch, I didn’t expect I’d need one. Didn’t expect to get this far. I wonder how long I’ll have to stay here before they stop looking. I should probably eat a Werther’s. Just the one though. Christ, I’m reduced to rationing sweets. <br><br>
+              I need to find somewhere dry. (Why did I choose to hide here anyway?) I could try a hostel? Would I need to show ID for that? I could lie, use a false name.<br><br>
+              I could be Gerald Andrews. I’m sure Maddie would have loved that.<br><br>
+            </p>
+            <label class="next-btn" for="c2">Next</label>
+          </div>
+        </div>
+        <div class="flip" id="p3">
+          <div class="back">
+            <p class="journal">
+              I suppose there is one other possibility.
+            </p>
+            <ul style="text-align: left; padding: 0 30px;">
+              <li>The lock-up.</li>
+            </ul>
+            <p class="journal"> 
+              I still have a key. My name isn’t on the lease anymore, and it’s secure and dry, but… Maddie stored her stuff there after she moved out. I’m not sure I could face being surrounded by all that history, even if it would be more comfy.<br><br>
+              I can’t sleep. This itch is killing me! Even the numbing cold from lying on the ground doesn’t dull it. It must be an anaphylactic response to something. The rash runs up my entire left side. I’ll try and find a better spot when the sun’s up.<br><br>
+              Thought I heard someone calling my name. No flashlight though, no movement, just the voice. Sounds like Maddie. My hands won’t stop shaking.<br><br>
+            </p>
+            <label class="back-btn" for="c3">Back</label>
+          </div>
+          <div class="front">
+            <p class="journal">
+              It is so quiet. The dense foliage deadens the city noise to a whisper. I can barely make out the sirens. I doubt they are for me, but I’m staying put anyway. <br><br>
+              I don’t have much choice; where would I go? I can’t go home, that’s the first place they’d look. Besides, too many memories there, and there are the neighbours… Always snooping around with their community watch flyers. I won’t miss parking scheme meetings, that’s for sure.<br><br>
+              List of alternative boltholes:
+            </p>
+            <ul style="text-align: left; padding: 0 30px;">
+              <li>Uncle T’s allotment. Safe, but about 9 miles away – too far. Daily chicken eggs are a plus, but not exactly private. Besides, the rooster would be a problem.</li>
+              <li>The hospital basement. This would have been the best solution, but getting there unseen is a problem and all, and no easy way to get food. It definitely would have been warmer and drier, though, with the boiler on all day.</li>
+            </ul>
+            <p class="journal">
+              I’m safer here in my little sanctuary. Sodden and sore, but safe.<br><br> 
+            </p>
+            <label class="next-btn" for="c3">Next</label>
+          </div>
+        </div>
+        <div class="flip" id="p4">
+          <div class="back">
+            <p class="journal">
+              Current condition:
+            </p>
+            <ul style="text-align: left; padding: 0 30px;">
+              <li>I taste aniseed.</li>
+              <li>My nose is running. Normal mucus, thank god.</li>
+              <li>The rash has spread across the whole of my back now, and if I move, I can feel the toughened area split and weep like a scab.</li>
+              <li>Feeling very lethargic. Probably hypothermia. Not good.</li>
+              <li>My fingernails are black with dirt, although I don’t remember digging…</li>
+              <li>The scratches are all weeping now.</li>
+              <li>Struggling not to fall back into vivid dreams.</li>
+            </ul>
+            <p class="journal"> 
+              I need to get up, get out of here for treatment. I’ll have to chance the pharmacist, at least. I saw one a few streets away. I’m not local, so I doubt they’d recognise me. I do still have my prescription pad with me, but using my own paperwork would be incredibly foolish. <br><br>
+              This place is far bigger than I thought. Followed the birch trees and the canopies over that cobbled path near the close. Lined with moss. There’s a dense wall of thickets overwhelming the boundary fence. I know it, I remember that. I can’t hear the traffic at all now. It’s hard to keep moving.
+            </p>
+            <label class="back-btn" for="c4">Back</label>
+          </div>
+          <div class="front">
+            <p class="journal">
+              It’s well after midnight. It – should be pitch black, but I can still make out grey shapes in the gloom. The voice is still calling for me. I’ve got to stay still even though my heart is racing. I think there were some branches cracking but I can’t tell from where.<br><br>
+              Morning soon, but I can still hear her out there, moving around in the garden. I almost called back as I dozed.<br><br>
+              My phone died. Just my luck. I can see enough to write, so it must be just before dawn… God knows I need the warmth.<br><br>
+              The rash is getting worse and my scratches will get infected if I don’t clean them. I examined one on my forearm and it seems to be secreting something full of coiled, translucent strands. Hair thin, their roots broke away easily when I pulled with a dull tear I could feel as much as hear. I’ve never seen anything like this before, but I was never great at dermatology.<br><br>
+              If I had the proper tools, this would be far simpler. Must get a scalpel and a mirror. I’ve cleaned the scratches as best I can, but there’s now a stabbing pain in my abdomen if I move.<br><br>
+            </p>
+            <label class="next-btn" for="c4">Next</label>
+          </div>
+        </div>
+        
+        <div class="flip" id="p5">
+          <div class="back">
+            <p class="journal">
+I am terribly afraid. Thank god for Maddie. I need to treat her better. She’ll be back soon with medicine.<br><br>
+
+Condition update: </p>
+<ul style="text-align: left; padding: 0 30px;">
+    <li>Dry mouth and swollen tongue. Tasting burnt aniseed now.</li>
+    <li>The fingers of my left hand are nearly immobile. Right is not much better. I don’t know how much longer I’ll be able to write.</li>
+    <li>The pain in my abdomen has passed and the seeping has mostly stopped, but my back aches.</li>
+    <li>I definitely have an infection. The scratches are budding some kind of polyps and the slightest touch feels like jabbing an exposed nerve.</li>
+    <li>I stink of jasmine. At least I think I do.</li>
+</ul>
+<p class="journal">
+I just need to rest, and it’s safe enough here. Maddie still hasn’t returned though. I hope she’s okay. I miss her laughter. And that smile.<br><br>
+
+I worry when she is out alone. She’ll talk to anyone, like Gerald. I never liked him. I should make more time for her; I’m too busy and work far too much. I get home and just – go to sleep! I need to be careful or we’ll drift apart. I don’t know what I would do if I thought I had lost her.<br><br>
+</p>
+            <label class="back-btn" for="c5">Back</label>
+          </div>
+          <div class="front">
+            <p class="journal">
+              I can’t find an entrance. I resorted to shouldering my way out through the tangled bushes like before. It hurt so much, but I made it. Only to find more garden on the other side. It looks the same. I think Maddie’s still here too.<br><br>
+              Jasmine everywhere. The smell stings where it touches me, but – that doesn’t make sense. I wonder if it’s psychosomatic? A guilty conscience with comorbid pneumonia…<br><br>
+              I’m back in the undergrowth. I’m not sure if I ever got up at all. I don’t remember coming back – my feet have swollen.<br><br>
+              Something is very wrong. If I don’t get to the pharmacy now I doubt I ever will. I’ve managed to push my feet back into my shoes with some pruning, but I’m struggling to stand.<br><br>
+              Maddie makes a good point, though. Doctors do make the worst patients. We are always self-diagnosing, and it’s always doom and gloom. She’s offered to go and get my supplies herself. She always was kind.<br><br>
+              I’ll just try to keep warm and sleep until the sun comes out. I so much want to see it again. This night seems endless. I want to be warm again.
+            </p>
+            <label class="next-btn" for="c5">Next</label>
+          </div>
+        </div>
+        
+        <div class="flip" id="p6">
+          <div class="back">
+            <p class="journal">
+            Maddie, is that you?
+
+            </p>
+            <label class="back-btn" for="c6">Back</label>
+          </div>
+          <div class="front">
+            <p class="journal">
+              
+              But I’m not alone here. I’m covered in insects. They seem to enjoy feasting on my wounds, so I let them. Besides, they scratch the itches.<br><br>
+
+My left arm is now completely numb and the skin is splitting down to the bone. I removed the phalanges – tugging them out like stones from a peach. I planted them deep. Flies swarm the wound, and soon there will be maggots eating only the dead flesh and leaving the living. Nature is so wonderful, so efficient; nothing is wasted in the garden.<br><br>
+
+I can see my bones are tangled with the same fine strands as my wounds. It’s fascinating to see. I should write a paper. Of course if the infection reaches the marrow there could be complications. I could take more drastic measures, but I would need something to cut with. Something strong and heavy. A rock perhaps? Could I? Should I?<br><br>
+              
+              I can’t tell how long I slept. Still no sun.<br><br>
+
+            </p>
+            <label class="next-btn" for="c6">Next</label>
+          </div>
+        </div>
+        
+        <div class="flip" id="p7">
+          <div class="back">
+            <p class="journal">
+            You’re right. I should stay.
+            </p>
+            <label class="back-btn" for="c7">Back</label>
+          </div>
+          <div class="front">
+            <p class="journal">
+              
+            </p>
+            <label class="next-btn" for="c7">Next</label>
+          </div>
+        </div>
+        
+        <div class="flip" id="p8">
+          <div class="back">
+            <p class="journal">
+             She has come back to me! Just a whisper but it is her! I knew she would never leave me. She says there is a spot where I can sit out in the sun and feel the wind on my face. What would I do without her?<br><br>
+
+We have decided not to remove any more of me as my condition develops. Maddie feels it isn’t prudent, now that the vomiting has passed. It was touch-and-go there for a while, but I think I’ve gotten most of the rot out, and made enough room to grow.<br><br>
+
+We’ll monitor the progression, of course, with a strict regimen of fresh air, sunshine, and rest. The polyps should be blooming soon.<br><br>
+
+Condition update:
+<ul style="text-align: left; padding: 0 30px;">
+    <li>I’ve gained some good weight and my skin is pulling away nicely, like blanched tomatoes.</li>
+    <li>My legs will be nonresponsive soon. I need to finalise my position before then, but there are many variables to consider. Maddie is advising.</li>
+    <li>The roots have freed themselves from the weight of my meat, as it sags from my bones and drops to the dirt.</li>
+    <li>No greenfly or other parasites. I remain quite healthy.</li>
+
+            </p>
+            <label class="back-btn" for="c8">Back</label>
+          </div>
+          <div class="front">
+            <p class="journal">
+              
+            </p>
+            <label class="next-btn" for="c8">Next</label>
+          </div>
+        </div>
+        
+        <div class="flip" id="p9">
+          <div class="back" style="height: 600px; width: 425px; background:#57341b; color:white;">
+            <p class="journal" >
+             
+            </p>
+            <label class="back-btn" for="c9" style="color:white;border:1px solid white;">Back</label>
+          </div>
+          <div class="front">
+            <p class="journal">
+              The clouds have finally broken and the azure skies are so bright, almost blinding! We are blessed with such a radiant joy of warmth and love sitting within our garden together. The thought of all those years behind me, toiling in the dark, ignoring nourishment for myself and others, so withdrawn… But no longer. I have so much time now, out in the light. But – strangely, deep inside me, beneath the roots, there is something that still shakes with terror. <br><br>
+
+I don’t see why. The sun is bright, my roots run deep, and the breeze is fresh and clear. I think I shall stay here for a good long while.
+            </p>
+            <label class="next-btn" for="c9">Next</label>
+          </div>
+        </div>
+
+        
+
+        
+        
+        
+        
+        
+        
+      </div>
+    </div>
+  </body>
+</html>

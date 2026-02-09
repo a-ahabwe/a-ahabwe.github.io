@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+      <style>
+        html, body {margin: 0; height: 100%; overflow: hidden}
+        .center {
+        
+          aspect-ratio: 45/80;
+          left: 35%;
+          top: 20px;
+          bottom: 20px;
+          position:fixed;
+          
+          
+          border: 1px solid lightgrey;
+          padding: 10px;
+        }
+        h3 {
+          font-family: Helvetica;
+          margin-top: 3px;
+          margin-bottom: 10px;
+        }
+        hr {
+          color: lightgrey;
+          border-width: 1px;
+        }
+        .sidenav {
+            height: 100%;
+            width: 275px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #ffffff;
+            border: 1px lightgray solid;
+            overflow-x: hidden;
+            padding-top: 10px;
+            padding-left: 10px;
+            animation: 1s fadeInRight;
+        }
+
+        
+
+        .sidenav a, .sidenav p {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            color: #000000;
+            display: block;
+        }
+
+        .sidenav a:hover {
+            color: #666666;
+        }
+
+        table {
+            width: 100%;
+            margin: auto;
+        }
+
+        .container {
+            aspect-ratio: 45/80;
+            height: 85vh;
+            background-image: url(./alert.png);
+            background-size: contain;
+            border-radius: 6px;
+        }
+
+        .video {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            aspect-ratio: 45/80;
+            height: 85vh;
+            
+            margin-bottom: 10px;
+            
+            
+            animation: 1s fadeInUp;
+        }
+        .ts {
+            right:0%;
+            top: 0%;
+            aspect-ratio: 45/80;
+            height: 85vh;
+            background-color: white;
+            border: #c0c0c0 1px solid;
+            background-size: contain;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            position: absolute;
+            display: none;
+        }
+        .dt {
+            right:90%;
+            aspect-ratio: 40/80;
+            height: 89.5vh;
+            background-color: white;
+            border: #c0c0c0 1px solid;
+            background-size: contain;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            position: relative;
+            overflow-y:auto;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        h3 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        
+        .tsbutton {
+            position:absolute; bottom: 125px; right: 10px; border-radius: 30px; border: #000000; padding: 10px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 600; color: white; background-color: #3d3d3d; offset:inherit;
+        }
+
+        .tsbutton:active {
+            background-color: #727272;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(10%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0%);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInRight {
+            0% {
+                transform: translateX(-20%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0%);
+                opacity: 1;
+            }
+        }
+
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }   
+
+        .scrollbutton {
+            font-size: 40px;
+            border-radius: 40px;
+            padding: 12px;
+            color: white;
+            background-color: #00000065;
+            border: none;
+        }
+
+        .scrollbutton:active {
+            background-color: #6e6e6e65;
+        }
+
+    </style>
+  </head>
+
+  
+  <body style="background-color: rgb(250, 250, 250)">
+    <div class="sidenav">
+        <img src="./vidklik.png" height="30px">
+        <hr style="color: #ffffff;">
+        <h2 style="margin-bottom: 5px;">@MadamElectrum</h2>
+        <a style="padding: 0px;">&#128279;MadamElectrum.wordpress.com</a>
+            <p style="color: rgb(104, 104, 104); font-size: 11.5px; font-weight: bold; padding: 0px; margin-bottom: 0px;">
+                <b style="font-size: 14.5px; color: black;">150</b> FOLLOWING&nbsp;&nbsp;&nbsp;<br><b style="font-size: 14.5px; color: black;">137.4K</b> FOLLOWERS&nbsp;&nbsp;&nbsp;<br><b style="font-size: 14.5px; color: black;">1.67M</b> LIKES
+            </p>
+            <p style="padding: 0px; margin-top: 10px; margin-bottom: 10px;">
+                The Madam will see you now! <br><br> <i>#gothgirl #lifestyle #beauty #alternative #aesthetic</i>
+            </p>
+            
+    </div>
+    <table style="margin-left: 100px;">
+        <tr>
+            <td>
+                <div class="video" id="vid1" style="margin-top: 20px;">
+                    <div class="container">
+                        <button style="position:absolute; bottom: 10px; left: 10px; color: white; background: none; border: none; font-size: 30px;"><b>ll</b></button>
+                        <div style="height: 4px;position:absolute; bottom: 26px; left: 45px; width: 39vh; background-color: white;"></div>
+                        <p style="position: absolute; bottom: 90px; left: 15px; color: rgb(139, 139, 139); font-size: 14px; font-weight: bold;">
+                            30-10-2023
+                        </p>
+                        <p style="position: absolute; bottom: 65px; left: 15px; color: white; font-weight: bold;">
+                            @MadamElectrum, @Ink5oul
+                        </p>
+                        <p style="position: absolute; bottom: 40px; left: 15px; color: white;">
+                            Tattoo Reveal!
+                        </p>
+                        <button onclick="toggleShow('ts1')" class="tsbutton">Show Transcript</button>
+                        
+                    </div>
+
+                    <div class="ts" id="ts1">
+                        <div>
+                            <h3 style="margin-top: 6px; margin-left: 7px;">Transcript</h3>
+                            <button onclick="toggleShow('ts1')" style="position:absolute; top: 0px; right: 5px; background: none; border: none; font-size: 30px;">&#215;</button>
+                        </div>
+                        <div style="padding: 10px; overflow-y: auto; height: calc(100% - 60px);">
+                            <table>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:01</b>
+                                    </td>
+                                    <td>
+                                        <p>Hey guys! It’s the one you’ve been waiting for, I know. I’ve had so many messages: when’s it gonna be, when’s it happening? Well, here we are! Madam Electrum coming to you live with the tattoo terror themselves: the one, the only, Ink5oul!</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:14</b>
+                                    </td>
+                                    <td>
+                                        <p>Hey.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:15</b>
+                                    </td>
+                                    <td>
+                                        <p>So for any of you sweetums who have been sleeping on this, Ink5oul is the tattoo CEO, period. No cap, their designs are in-credible, and only for the true ubergoth. Ain’t that right?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:28</b>
+                                    </td>
+                                    <td>
+                                        <p>That’s what they tell me.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:30</b>
+                                    </td>
+                                    <td>
+                                        <p>And let me say, they are the absolute GOAT, so I’m here for my very own, completely personalized, absolutely aesthetic, totally vegan, boujee ink. For free?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:39</b>
+                                    </td>
+                                    <td>
+                                        <p>That’s right.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:40</b>
+                                    </td>
+                                    <td>
+                                        <p>This is seriously… I’m going in straight blind, trusting the process, and I am a full on Ink5oul stan. So, as I finna get marked, make sure you’re following on socials, subbed to my Youtube and OnlyFans (if you know, you know) and sending those like, like, likes!</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:57</b>
+                                    </td>
+                                    <td>
+                                        <p>You ready for your heart’s desire?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:00</b>
+                                    </td>
+                                    <td>
+                                        <p>I’m literally shaking! But… What’s the worst that can happen?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:03</b>
+                                    </td>
+                                    <td>
+                                        <p>Let’s find out.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:06</b>
+                                    </td>
+                                    <td>
+                                        <p>...</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:19</b>
+                                    </td>
+                                    <td>
+                                        <p>Is… is it over?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:23</b>
+                                    </td>
+                                    <td>
+                                        <p>Take a look.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:26</b>
+                                    </td>
+                                    <td>
+                                        <p>What do you think?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:31</b>
+                                    </td>
+                                    <td>
+                                        <p>Oh. Oh wow…</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:33</b>
+                                    </td>
+                                    <td>
+                                        <p>Now get out.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="video" id="vid2">
+                    <div class="container">
+                        <button style="position:absolute; bottom: 10px; left: 10px; color: white; background: none; border: none; font-size: 30px;"><b>ll</b></button>
+                        <div style="height: 4px;position:absolute; bottom: 26px; left: 45px; width: 39vh; background-color: white;"></div>
+                        <p style="position: absolute; bottom: 90px; left: 15px; color: rgb(139, 139, 139); font-size: 14px; font-weight: bold;">
+                            19-12-2023 
+                        </p>
+                        <p style="position: absolute; bottom: 65px; left: 15px; color: white; font-weight: bold;">
+                            @MadamElectrum
+                        </p>
+                        <p style="position: absolute; bottom: 40px; left: 15px; color: white;">
+                            Recent Ink5oul rumours!
+                        </p>
+                        <button onclick="toggleShow('ts2')" class="tsbutton">Show Transcript</button>
+                    </div>
+                    <div class="ts" id="ts2">
+                        <h3 style="margin-top: 6px; margin-left: 7px;">Transcript</h3>
+                        <button onclick="toggleShow('ts2')" style="position:absolute; top: 0px; right: 5px; background: none; border: none; font-size: 30px;">&#215;</button>
+                        <div style="padding: 10px; overflow-y: auto; height: calc(100% - 60px);">
+                            <table>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:00</b>
+                                    </td>
+                                    <td>
+                                        <p>Hey guys! So, you’ve all been asking, and yeah, ya fave thick and perky kindergoth is finally finna spill on the whole Ink5oul drama.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:07</b>
+                                    </td>
+                                    <td>
+                                        <p>Now y’all know I’m not one to sip when there’s tea, even when they’re mutuals, but this is super hard for me cos like, y’all know I’m kind of in a situationship with them, ever since I got that heart tat and I don’t wanna throw shade. But I gotta be savage, cos something been living rent free, and… I gotta talk about it, ya get me?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:28</b>
+                                    </td>
+                                    <td>
+                                        <p>So like, since getting that ink I been feeling A-MA-ZING. And I admit I mighta been a bit extra, simping on Ink5oul. So you knows your girl was slidin’ into their DMs – holla to all them other thirsty girls! – and I got into a bit of a kiki.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:43</b>
+                                    </td>
+                                    <td>
+                                        <p>We was chattin’ ‘bout their work, how much I love it, and ya girl got to asking where they got their ideas, cos like, obviously I’m no cap jelly of their skills. So they was all like “secrets,” and, sure, but that got me sus, cos like, we were high-key vibing then suddenly they’re just like, dead, y’know?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:03</b>
+                                    </td>
+                                    <td>
+                                        <p>Anyway, after that we’re both hustlin’ as we do an’ don’t talk for a while. Then from nowhere they’re like, “So are you a real goth or not?” And I’m like –</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:13</b>
+                                    </td>
+                                    <td>
+                                        <p>“I’m more goth than you can handle.”</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:16</b>
+                                    </td>
+                                    <td>
+                                        <p>And they just send me “from.vision.ruled, Thursday, two thirty AM”. Takes a tick for me to clock that it’s 3words, but when I look it up, turns out it’s this patch up in Highgate Cemetery?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:30</b>
+                                    </td>
+                                    <td>
+                                        <p>Natch, I was in. Sure, it’s a bit sus but also like, that’s Gothdam Central. No way I’d pass up the chance to vibe with Ink5oul there. Even if it was a bit of an afterparty, ya feel me?</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:42</b>
+                                    </td>
+                                    <td>
+                                        <p>So I sneaked in – “allegedly” – and there they were chillin’ in the dark with a big-ass spade over their shoulder? Big mood, amirite? I figure ya girl is in for a spooky treat, bit of roleplay, but they’re still straight dead with me, just tell me to follow, so I do.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>2:00</b>
+                                    </td>
+                                    <td>
+                                        <p>We head on through the graves, and then they point to one of ‘em and just give me a look. I was no cap shook. And then they just said, “dig.”</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>2:09</b>
+                                    </td>
+                                    <td>
+                                        <p>I laughed, ‘cause, like, the hell? But they were serious. “I thought you were goth?” they said.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>2:16</b>
+                                    </td>
+                                    <td>
+                                        <p>Now ya girl is hella goth. But. This? This was just nasty! So I told them they were outta pocket and they just give me the look again and whisper, “Don’t make me break your heart.”</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>2:30</b>
+                                    </td>
+                                    <td>
+                                        <p>I’m telling you, I could feel the words in my chest, y’know? Brutal. That does me and so I am out of there like that.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>2:40</b>
+                                    </td>
+                                    <td>
+                                        <p>Now I ain’t no fool and I know crazy when I peep it. So I bail.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>2:46</b>
+                                    </td>
+                                    <td>
+                                        <p>But that ain’t the whole story, oh no. Cos I know some of you seen on the news the next day there’s this whole thing about someone breaking into Highgate and no-cap robbing graves.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>2:58</b>
+                                    </td>
+                                    <td>
+                                        <p>Now I know what y’all are thinking, and hell no I ain’t gonna call it in, but like… Y’all gotta know what’s up. And, like, where does Ink5oul get all their ideas, huh? Are they really all that or maybe, maybe – they’re just bitin’ stuff from some mouldy old bodies. Nasty. Ya girl is a goth, not a ghoul, and I am done with Ink5oul.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>3:23</b>
+                                    </td>
+                                    <td>
+                                        <p>That’s all I got time for right now. I’ll be back with another vid next week. Until then, Darklove to all my creepy sweeties, and laters-haters! Peace!</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="video" id="vid3">
+                    <div class="container">
+                        <button style="position:absolute; bottom: 10px; left: 10px; color: white; background: none; border: none; font-size: 30px;"><b>ll</b></button>
+                        <div style="height: 4px;position:absolute; bottom: 26px; left: 45px; width: 39vh; background-color: white;"></div>
+                        <p style="position: absolute; bottom: 90px; left: 15px; color: rgb(139, 139, 139); font-size: 14px; font-weight: bold;">
+                            19-12-2023
+                        </p>
+                        <p style="position: absolute; bottom: 65px; left: 15px; color: white; font-weight: bold;">
+                            @MadamElectrum
+                        </p>
+                        <p style="position: absolute; bottom: 40px; left: 15px; color: white;">
+                            OMG That callout video!
+                        </p>
+                        <button onclick="toggleShow('ts3')"  class="tsbutton">Show Transcript</button>
+                    </div>
+                    <div class="ts" id="ts3">
+                        <h3 style="margin-top: 6px; margin-left: 7px;">Transcript</h3>
+                        <button onclick="toggleShow('ts3')" style="position:absolute; top: 0px; right: 5px; background: none; border: none; font-size: 30px;">&#215;</button>
+                        <div style="padding: 10px; overflow-y: auto; height: calc(100% - 60px);">
+                            <table>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:03</b>
+                                    </td>
+                                    <td>
+                                        <p>Hey guys, M&M here with another update.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:07</b>
+                                    </td>
+                                    <td>
+                                        <p>Y’all probably heard by now that Ink5oul dragged me on their channels. It was… it was vicious, pick-me trash. And everyone bought it and their stans are seriously extra cos… yeah, there’s been proper hate at me. And y’know, I try to rise above, but it’s hard.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:25</b>
+                                    </td>
+                                    <td>
+                                        <p>I’m a good person. I’m such a good person, but I’ve been getting callouts, death threats, they even doxxed me and then the cops turned up trying to pin all that grave-robbing BS on me. It was total bull. I didn’t do jack, but Ink5oul did me dirty, and so now I guess we’re opps? They are a psycho but no one believes me!</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:47</b>
+                                    </td>
+                                    <td>
+                                        <p>I’ve wanted to talk about this stuff for time but I knew if I did, they’d turn on me and give y’all totally the wrong idea, and now everyone is taking their side and it’s not… it’s not…</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:59</b>
+                                    </td>
+                                    <td>
+                                        <p>It – hurts.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:02</b>
+                                    </td>
+                                    <td>
+                                        <p>All that hate, all those people wanting me dead or worse, I can feel it. No cap, it hits right here. It’s like y’all are bees stinging me over and over right in the heart! I dunno if the camera’s picking it up but you can even see it…</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:20</b>
+                                    </td>
+                                    <td>
+                                        <p>That’s not okay, I’m – not okay. I just, I just wanted y’all to listen. But instead…</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:31</b>
+                                    </td>
+                                    <td>
+                                        <p>I’m gonna be taking some time away from socials. Big thanks to all of you who’ve been stepping up for me, but I – can’t…</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:41</b>
+                                    </td>
+                                    <td>
+                                        <p>I just can’t.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="video" id="vid4">
+                    <div class="container">
+                        <button style="position:absolute; bottom: 10px; left: 10px; color: white; background: none; border: none; font-size: 30px;"><b>ll</b></button>
+                        <div style="height: 4px;position:absolute; bottom: 26px; left: 45px; width: 39vh; background-color: white;"></div>
+                        <p style="position: absolute; bottom: 115px; left: 15px; background-color: #666666; padding: 3px; color: rgb(255, 255, 255); font-size: 12px; font-weight: bold;">DRAFT</p>
+                        <p style="position: absolute; bottom: 90px; left: 15px; color: rgb(139, 139, 139); font-size: 14px; font-weight: bold;">
+                            03-01-2024
+                        </p>
+                        <p style="position: absolute; bottom: 65px; left: 15px; color: white; font-weight: bold;">
+                            @MadamElectrum
+                        </p>
+                        <p style="position: absolute; bottom: 40px; left: 15px; color: white;">
+                            Help
+                        </p>
+                        <button onclick="toggleShow('ts4')" class="tsbutton">Show Transcript</button>
+                    </div>
+                    <div class="ts" id="ts4">
+                        <h3 style="margin-top: 6px; margin-left: 7px;">Transcript</h3>
+                        <button onclick="toggleShow('ts4')" style="position:absolute; top: 0px; right: 5px; background: none; border: none; font-size: 30px;">&#215;</button>
+                        <div style="padding: 10px; overflow-y: auto; height: calc(100% - 60px);">
+                            <table>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:04</b>
+                                    </td>
+                                    <td>
+                                        <p>Hey everyone. I’ve been getting a lot of, um, worried comments… on my last vid… so I wanted to update. I’ve got to… be quiet. Not meant to have my phone.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:18</b>
+                                    </td>
+                                    <td>
+                                        <p>So since that last vid, things got worse… started getting dodgy mail… then someone – set my door on fire…</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:28</b>
+                                    </td>
+                                    <td>
+                                        <p>The cats are okay, but… I had to move back in with mum and dad, and now…</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:36</b>
+                                    </td>
+                                    <td>
+                                        <p>I’m in the hospital… there’s – something wrong with my heart… but they’re not sure.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>0:44</b>
+                                    </td>
+                                    <td>
+                                        <p>It hurts. It hurts so much… mum – says it’s stress, but doctor says it’s an infection from the tattoo, but… I know it’s more than that.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:06</b>
+                                    </td>
+                                    <td>
+                                        <p>I just wanted to be noticed… I just…</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:11</b>
+                                    </td>
+                                    <td>
+                                        <p>[coughing]</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:15</b>
+                                    </td>
+                                    <td>
+                                        <p>I don’t deserve this… Please, please just stop. The views are cutting me. The comments hurt.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 35px;">
+                                        <b>1:27</b>
+                                    </td>
+                                    <td>
+                                        <p>I’m done… I’m – done and… and…</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="vertical-center">
+        <button onclick="blockscrollbutton(-1)" class="scrollbutton">&#9650;</button> <br> <button onclick="blockscrollbutton(1)" class="scrollbutton">&#9660;</button>
+    </div>
+    
+    <script>
+        canscroll = true;
+        delay = false;
+
+        function toggleShow(id) {
+            if (document.getElementById(id).style.display != "block") {
+                document.getElementById(id).style.display = "block";
+                switch (id) {
+                    case "ts1":
+                        document.getElementById("vid1").style.aspectRatio = "90 / 80";
+                        break;
+                    case "ts2":
+                        document.getElementById("vid2").style.aspectRatio = "90 / 80";
+                        break;
+                    case "ts3":
+                        document.getElementById("vid3").style.aspectRatio = "90 / 80";
+                        break;
+                    case "ts4":
+                        document.getElementById("vid4").style.aspectRatio = "90 / 80";
+                        break;
+                }
+            } else {
+                document.getElementById(id).style.display = "none";
+                switch (id) {
+                    case "ts1":
+                        document.getElementById("vid1").style.aspectRatio = "45 / 80";
+                        break;
+                    case "ts2":
+                        document.getElementById("vid2").style.aspectRatio = "45 / 80";
+                        break;
+                    case "ts3":
+                        document.getElementById("vid3").style.aspectRatio = "45 / 80";
+                        break;
+                    case "ts4":
+                        document.getElementById("vid4").style.aspectRatio = "45 / 80";
+                        break;
+                }
+            }
+            
+        }
+        console.log("delayed: " + delay);
+        function blockscroll(event) {
+            event.preventDefault();
+            if (canscroll && !delay) {
+                if (event.deltaY > 1 && cur < 4) {
+                    cur++;
+                } else if (event.deltaY < 1 && cur > 0) {
+                    cur--;
+                }
+                delay = true;
+                console.log("delayed: " + delay);
+                setTimeout(function () { setdelayed(false) }, 1000);
+                document.getElementById("vid" + cur).scrollIntoView({ block: 'center',  behavior: 'smooth' });
+            }
+        }
+
+        function blockscrollbutton(x) {
+            if (cur + x >= 1 && cur + x <= 4) {
+                cur += x;
+                document.getElementById("vid" + cur).scrollIntoView({ block: 'center',  behavior: 'smooth' });
+            }
+            
+        }
+        setTimeout(function () { document.getElementById("vid1").scrollIntoView({ block: 'center',  behavior: 'smooth' }); }, 250)
+        
+
+        function setdelayed(x) {
+            delay = x;
+            console.log("delayed: " + delay);
+        }
+
+            const el = document.querySelector("body");
+            el.onwheel = blockscroll;
+            cur = 1;
+            blockscrollbutton(0);
+
+            const ts1 = document.getElementById("ts1");
+            const ts2 = document.getElementById("ts2");
+            const ts3 = document.getElementById("ts3");
+            const ts4 = document.getElementById("ts4");
+
+            ts1.addEventListener("mouseenter", (e) => { canscroll = false; });
+            ts1.addEventListener("mouseleave", (e) => { canscroll = true;  });
+
+            ts2.addEventListener("mouseenter", (e) => { canscroll = false; });
+            ts2.addEventListener("mouseleave", (e) => { canscroll = true;  });
+
+            ts3.addEventListener("mouseenter", (e) => { canscroll = false; });
+            ts3.addEventListener("mouseleave", (e) => { canscroll = true;  });
+
+            ts4.addEventListener("mouseenter", (e) => { canscroll = false; });
+            ts4.addEventListener("mouseleave", (e) => { canscroll = true;  });
+
+            
+    </script>
+  </body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updates & Live-posting - Finding My Piece</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .forum-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            border-bottom: 2px solid #4a5568;
+        }
+        
+        .forum-title {
+            color: #ff6b6b;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .forum-subtitle {
+            color: #a0a0a0;
+            font-size: 0.9em;
+        }
+        
+        .post-container {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+        }
+        
+        .post {
+            padding: 25px;
+            border-bottom: 1px solid #4a5568;
+            position: relative;
+        }
+        
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.85em;
+            color: #a0a0a0;
+        }
+        
+        .post-registration {
+            background: rgba(255, 107, 107, 0.1);
+            padding: 8px 12px;
+            border-radius: 5px;
+            border-left: 3px solid #ff6b6b;
+        }
+        
+        .post-number {
+            background: rgba(74, 85, 104, 0.3);
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .post-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #ffd93d;
+            margin-bottom: 15px;
+        }
+        
+        .post-content {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .post-content p {
+            margin-bottom: 12px;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(74, 85, 104, 0.2);
+            border: 1px solid #4a5568;
+            color: #e0e0e0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .action-btn:hover {
+            background: rgba(74, 85, 104, 0.4);
+            border-color: #6b7280;
+            transform: translateY(-1px);
+        }
+        
+        .like-btn {
+            border-color: #ff6b6b;
+        }
+        
+        .like-btn:hover {
+            background: rgba(255, 107, 107, 0.1);
+            border-color: #ff6b6b;
+        }
+        
+        .comment-btn {
+            border-color: #4ecdc4;
+        }
+        
+        .comment-btn:hover {
+            background: rgba(78, 205, 196, 0.1);
+            border-color: #4ecdc4;
+        }
+        
+        .action-count {
+            font-weight: bold;
+            color: inherit;
+        }
+        
+        .like-icon, .comment-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        
+        .username {
+            color: #ffd93d;
+            font-weight: bold;
+        }
+        
+        .timestamp {
+            font-style: italic;
+        }
+        
+        .comment-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #4a5568;
+            display: none;
+        }
+        
+        .comment-thread {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 15px;
+        }
+        
+        .no-comments {
+            text-align: center;
+            color: #a0a0a0;
+            font-style: italic;
+            padding: 20px;
+        }
+        .back-btn {
+            background: rgba(74, 85, 104, 0.3);
+            border: 1px solid #4a5568;
+            color: #e0e0e0;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .back-btn:hover {
+            background: rgba(74, 85, 104, 0.5);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="forum-header">
+            <div class="forum-title">FORUM THREAD: Updates & Live-posting</div>
+            <div class="forum-subtitle">Community support and documentation space</div>
+        </div>
+        <div class="page-container">
+            <a href="user-profile.html" class="back-btn">← Back to Alnewman86</a>
+        
+        <div class="post-container">
+            <div class="post">
+                <div class="post-meta">
+                    <div class="post-registration">
+                        <span class="username">Alnewman86</span> <span class="timestamp">(18-08-18, 22:03)</span>
+                    </div>
+                    <!-- <div class="post-number">POST #1: <span class="timestamp">(20-06-18, 19:31)</span></div> -->
+                </div>
+                
+                <div class="post-title">POST #8: My Secret - Update 1</div>
+                
+                <div class="post-content">
+                    <p>Hey all. I know it’s been a few weeks since I updated. I’m in the early parts of stage 2 and I’m here to confirm it is <emphasis>TERRIFYING</emphasis>. It started with my feet. I noticed in the shower one day that I couldn’t feel the hot water on them… it was so strange at first, but I knew what was happening thanks to your advice. It’s up to my waist now… no feeling whatsoever.</p>
+                    
+                    <p>I’m on bereavement leave from work for the next bit, then I have some vacation days saved up. I have the humidifiers set high, the curtains are taped shut, and everything I need is within reach. I know any day now my second stage will properly begin.</p>
+                    
+                    <p>I’m… terrified. I’m exhilarated. It’s really happening!</p>
+                    
+                    <p>Wish me luck!</p>
+                </div>
+                
+                <div class="post-actions">
+                    <button class="action-btn like-btn" onclick="toggleLike()">
+                        <svg class="like-icon" viewBox="0 0 24 24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                        <span class="action-count" id="like-count">54</span>
+                    </button>
+                    
+                    <button class="action-btn comment-btn" onclick="toggleComments()">
+                        <svg class="comment-icon" viewBox="0 0 24 24">
+                            <path d="M21,6C21,4.89 20.11,4 19,4H5A2,2 0 0,0 3,6V14A2,2 0 0,0 5,16H16L21,21V6Z"/>
+                        </svg>
+                        <span class="action-count" id="comment-count">0</span>
+                    </button>
+                </div>
+                
+                <div class="comment-section" id="comment-section">
+                    <div class="no-comments">No comments yet. Be the first to respond!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let likeCount = 54;
+        let liked = false;
+        let commentsVisible = false;
+
+        function toggleLike() {
+            const likeBtn = document.querySelector('.like-btn');
+            const likeCountElement = document.getElementById('like-count');
+            
+            if (!liked) {
+                likeCount++;
+                liked = true;
+                likeBtn.style.background = 'rgba(255, 107, 107, 0.2)';
+                likeBtn.style.color = '#ff6b6b';
+            } else {
+                likeCount--;
+                liked = false;
+                likeBtn.style.background = 'rgba(74, 85, 104, 0.2)';
+                likeBtn.style.color = '#e0e0e0';
+            }
+            
+            likeCountElement.textContent = likeCount;
+        }
+
+        function toggleComments() {
+            const commentSection = document.getElementById('comment-section');
+            commentsVisible = !commentsVisible;
+            
+            if (commentsVisible) {
+                commentSection.style.display = 'block';
+            } else {
+                commentSection.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

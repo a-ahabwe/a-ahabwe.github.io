@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        font-family: Arial;
+        background-color: #471313;
+      }
+      /* Style the tab */
+      .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        
+        background-color: #f1f1f1;
+        margin: auto;
+        width: 800px;
+        z-index:0;
+      }
+      /* Style the buttons inside the tab */
+      .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 25%;
+        background-image: linear-gradient(#ffee81, #d6a200);
+      }
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+        background-color: #ddd;
+        background-image: linear-gradient(#ffee81, #d6a200);
+      }
+      /* Create an active/current tablink class */
+      .tab button.active {
+        background-color: #ccc;
+        background-image: linear-gradient(#fef4b2, #d67500);
+      }
+      /* Style the tab content */
+      .tabcontent {
+        display: none;
+        padding: 0px;
+        border: 1px solid #ccc;
+        background-color: white;
+        margin: auto;
+        width: 800px;
+        z-index:0;
+        animation: fadeEffect 3.5s;
+      }
+      
+      @font-face {
+        font-family: title;
+        src:url(./murderer.ttf);
+      }
+      
+      @keyframes fadeEffect {
+        from {opacity: 0;}
+        to {opacity: 1;}
+      }
+      
+      h1 {
+        text-align: center;
+        font-family: title;
+        font-size: 150px;
+        margin: 30px;
+        color: white;
+      }
+      
+      h2 {
+        background-image: linear-gradient(to right, #ffffff, #d6a200);
+        padding: 10px;
+      }
+      p {
+        margin: 5px;
+      }
+      
+      @keyframes fade {
+        0%, 100% {opacity: 0}
+        50% {opacity: 0.25}
+      }
+      
+      .bg {
+        z-index: -1;
+        image-rendering: pixelated;
+        animation: fade 15s linear infinite;
+        position: absolute;
+      }
+      .inactive {
+        display: none;
+      }
+      
+      
+    </style>
+  </head>
+  <body id="body">
+    <h1>Voyeur</h1>
+      <img src="eye0.gif" id="eye1" class="inactive" style="top: 100px; left: 50px;">
+      <img src="eye1.gif" id="eye2" class="inactive" style="top: 300px; right: 75px;">
+      <img src="eye2.gif" id="eye3" class="inactive" style="top: 700px; left: 30px;">
+      <img src="eye3.gif" id="eye4" class="inactive" style="top: 600px; right: 125px;">
+      <img src="eye4.gif" id="eye5" class="inactive" style="top: 500px; left: 125px;">
+      <img src="eye5.gif" id="eye6" class="inactive" style="top: 800px; right: 300px;">
+      <img src="eye3.gif" id="eye7" class="inactive" style="bottom: 75px; left: 60%;  transform: scaleX(-1);">
+      <img src="eye0.gif" id="eye8" class="inactive" style="bottom: 100px; left: 40%;transform: scaleX(-1);">
+      <img src="eye1.gif" id="eye9" class="inactive" style="top: 75px; right: 30%; transform: scaleY(-1) scaleX(-1)">
+      <img src="eye4.gif" id="eye10" class="inactive" style="top: 400px; right: 150px; transform: scaleX(-1);">
+      <img src="eye5.gif" id="eye11" class="inactive" style="bottom: 10%; left: 15%; transform: scaleX(-1);">
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'The Film')">The Film</button>
+      <button class="tablinks" onclick="openTab(event, 'Contest')">Contest</button>
+      <button class="tablinks" onclick="openTab(event, 'Gallery')">Gallery</button>
+      <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
+    </div>
+    <div id="The Film" class="tabcontent">
+      <h2>Voyeur</h3>
+      <p>"Needs to be seen to be believed!" <br> "The scariest movie I've ever seen!" <br><br> Voyeur is the sc»ðsžšåÞя—Ř§ŮráÚÆ Â£½	—舐▀—????╟Â£Š舐©ðsžšåÞя舐óÞ¢áñ????ðsžšåÞя©—Â£—舐▀舐Â£▀Ř§Ů½	æØ¢Ã©????Ř§Ů—â€š�????ðsžšåÞяæØ¢Ãâ€š�—Ř§Ů—»舐©—½	????——????Â£½	½	????ðsžšåÞя½	¶舐╟óÞ¢áñ©舐Þ¥¿Ř§Ů╟Â£©©ðsžšåÞя╟Ř§Ů½	æØ¢ÃóÞ¢áñ????ðsžšåÞя舐Â£Þ¥¿????½	舐óÞ¢áñ????ðsžšåÞяÂ£Þ¥¿ráÚÆ Â£óÞ¢áñ©▀Ř§Ů▀ñâmå•舐舐—????舐Â£▀óÞ¢áñ????ðsžšåÞя©—Â£—舐╟舐½	—©Ř§Ů½	ñâmå•Ř§Ů☒Â£—舐</p>
+    </div>
+    <div id="Contest" class="tabcontent">
+      <h2>Contest</h3>
+      <p>
+      Have a chance to win a private screening and become part of a special Q&A session with the esteemed director of Voyeur! <br>
+      Type your name here to enter:
+      <input type="text" style="margin-top: 5px;" id="name" name="name">
+            <button style="background-color: white; border-color: black; border-width: 1px; border-radius: 2px; padding: 2px; color: black;" onclick="submitName(event, 'Contest Submitted'); startDelay();">Enter Contest</button>
+      
+      </p>
+    </div>
+    <div id="Gallery" class="tabcontent">
+      <h2>Gallery</h3>
+      <img src="eyes.png" width="100%">
+    </div>
+    <div id="Contact" class="tabcontent">
+      <h2>Thank you!</h2>
+      <p>Contact has been made.</p>
+    </div>
+    
+    <div id="Contest Submitted" class="tabcontent">
+      <h2>Thank you!</h2>
+      <p id="typingtext">- </p>
+    </div>
+    
+    <script>
+    var index = 0;
+      function openTab(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      openTab(event, 'The Film')
+      
+      function submitName (evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+        
+        document.getElementById('body').style.backgroundColor="black";
+        document.getElementById("eye1").className = "bg";
+        document.getElementById("eye2").className = "bg";
+        document.getElementById("eye3").className = "bg";
+        document.getElementById("eye4").className = "bg";
+        document.getElementById("eye5").className = "bg";
+        document.getElementById("eye6").className = "bg";
+        document.getElementById("eye7").className = "bg";
+        document.getElementById("eye8").className = "bg";
+        document.getElementById("eye9").className = "bg";
+        document.getElementById("eye10").className = "bg";
+        document.getElementById("eye11").className = "bg";
+      }
+      
+      function startDelay () {
+        setTimeout("typeWriter('We will be in touch shortly.', 150)", 600);
+      }
+      
+      function typeWriter(txt, speed) {
+        console.log("called");
+        if (index < txt.length) {
+          console.log('added');
+          document.getElementById("typingtext").innerHTML += txt.charAt(index);
+          index++;
+          setTimeout('typeWriter("We will be in touch shortly.", 150)', 150);
+        } else {
+          console.log('ended' + txt + txt.length)
+        }
+      }
+    </script>
+  </body>
+</html>
