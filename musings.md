@@ -5,7 +5,7 @@ permalink: /musings/
 ---
 
 <div class="musings-list">
-  <p><em>Just some un-serious experiments and thoughts.</em></p>
+  <p><em>Just some fun experiments and thoughts.</em></p>
   
   <ul>
     {% for post in site.posts %}
