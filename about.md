@@ -7,9 +7,8 @@ permalink: /about/
 Some information about you!
 
 ### More Information
-
-A place to include any other types of information that you'd like to include about yourself.
+My journey so far
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[lynn.ahabwe@gmail.com](mailto:lynn.ahabwe97@gmail.com)
