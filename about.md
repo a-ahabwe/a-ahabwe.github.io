@@ -5,7 +5,7 @@ title: My Story
 
 ## Professionally
 
-I am a Biomedical and Artificial Intelligence Engineer currently interested in computational neuroscience, bridging the gap between signal processing, machine learning, and neural data analysis. My focus is on making neuro-health technology inclusive and accessible.
+I am a Biomedical and Artificial Intelligence Engineer currently interested in computational neuroscience, attemtping to bridge the gap between signal processing, machine learning, and neural data analysis. My focus is on making neuro-health technology inclusive and accessible.
 
 ### Education & Research
 * **M.S. in Engineering AI**, Carnegie Mellon University Africa (2025).
