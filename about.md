@@ -14,4 +14,4 @@ Sometimes I write, and maybe you will see it featured here.
 
 ### Contact me
 
-[lynn.ahabwe@gmail.com](mailto:lynn.ahabwe97@gmail.com)
+[lynn.ahabwe97@gmail.com](mailto:lynn.ahabwe97@gmail.com)
