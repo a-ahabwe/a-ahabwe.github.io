@@ -18,16 +18,19 @@ html {
 }
 
 body {
-	background: $white;
-  font: 18px/1.4 $helvetica;
-  color: $darkGray;
+    background: $white; // This now uses your soft blue
+    font: 18px/1.6 $helvetica; // Slightly more line-height for readability
+    color: $darkGray;
+    transition: background-color 0.5s ease; // Smooth feel
 }
 
 .container {
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 0 10px;
-  width: 100%;
+    margin: 0 auto;
+    max-width: 740px;
+    padding: 40px 20px; // More breathing room
+    background: #ffffff; // Keep the actual content area white for contrast
+    box-shadow: 0 0 20px rgba(0,0,0,0.05); // Very subtle shadow
+    border-radius: 8px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -209,30 +212,17 @@ img {
     margin: 3px 0;
   }
 }
-
 nav {
-  float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue;
-  font-size: 18px;
-
-  @include mobile {
-    float: none;
-    margin-top: 9px;
-    display: block;
-    font-size: 16px;
-  }
-
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: $blue;
     text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
 
-    @include mobile {
-      margin: 0 10px;
-      color: $blue;
+    &:hover {
+      border-bottom: 2px solid $blue; // Nice underline effect on hover
+      color: $darkGray;
     }
   }
 }
