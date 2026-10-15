@@ -8,6 +8,7 @@ title: My Story
 I am a Biomedical and Artificial Intelligence Engineer currently interested in computational neuroscience, attemtping to bridge the gap between signal processing, machine learning, and neural data analysis. My focus is on making neuro-health technology inclusive and accessible.
 
 ### Education & Research
+* **PhD Student, Brain Science and Engineering**, 성균관대학교 Sungkyunkwan University (Currently)
 * **M.S. in Engineering AI**, Carnegie Mellon University Africa (2025).
 * **Data Science and AI**, Tech4Dev (2023).
 * **B.S. in Biomedical Engineering**, Mbarara University of Science and Technology (2020).
@@ -22,7 +23,7 @@ I am a Biomedical and Artificial Intelligence Engineer currently interested in c
 
 ## Socially???
 
-I am currently based in **Kigali, Rwanda**. Outside of the lab, I am a passionate advocate for mental health awareness and neurodivergence. 
+I am currently based in **Suwon, South Korea**. Outside of the lab, I am a passionate advocate for mental health awareness and neurodivergence. 
 
 ### A Reader's Goal
 I love reading and collecting. My current shelf holds a repertoire of close to **200 books**, but the ultimate goal is to curate a personal library of **1,000+ volumes**. 
